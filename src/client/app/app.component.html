@@ -1,0 +1,14 @@
+<h1>
+    {{ title }}
+</h1>
+<br/>
+<a [routerLink]="['change-language', 'en']">English</a>
+<a [routerLink]="['change-language', 'fr']">french</a>
+<br/><br/>
+<a [routerLink]="['']">Home</a>
+<a [routerLink]="['auth','signin']">Signin</a>
+<a [routerLink]="['auth','forgot-password']">forget-password</a>
+<a [routerLink]="['auth','reset-password']">reset-password</a>
+<a [routerLink]="['auth', 'signup']">signup</a>
+<br/><br/>
+<router-outlet></router-outlet>
