@@ -1,11 +1,4 @@
-html {
-  font-size: 14px;
-}
-
-body {
-  font-family: 'Open Sans' ,sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #333;
-  background-color: #fff;
-}
+$body-bg:    #fff;
+$brand-primary:    #fb7e14;
+$gray-dark : #28292b;
+@import 'node_modules/bootstrap/scss/bootstrap.scss';

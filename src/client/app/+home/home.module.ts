@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { BackandService } from '@backand/angular2-sdk';
+//import { BackandService } from '@backand/angular2-sdk';
 
 // libs
 // import { I18NRouterModule } from '@ngx-i18n-router/core';
@@ -18,7 +18,7 @@ import { HomeComponent } from './home.component';
     RouterModule.forChild(routes)
   ],
   declarations: [HomeComponent],
-  providers: [BackandService]
+  //providers: [BackandService]
 })
 export class HomeModule {
 }
