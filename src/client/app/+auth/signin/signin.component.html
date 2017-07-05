@@ -1,0 +1,34 @@
+<div class="page-signin center-box">
+  <form name="form">
+    <div class="md-form-group float-label">
+      <input type="email" class="md-input" required="">
+      <label>Email <span>*</span></label>
+    </div>
+    <div class="md-form-group float-label">
+      <input type="password" class="md-input" required="">
+      <label>Password <span>*</span></label>
+    </div>
+    <div class="my-md">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6">
+          <label class="md-check">
+        <input type="checkbox" class="has-value"><i class="primary"></i> <small>Remember me</small>
+      </label>
+        </div>
+        <div class="col-xs-6 col-sm-6 text-right">
+          <a routerLink="/auth/forgot-password" class="small" title="Forget your password?">Forget your password?</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-box-footer">
+      <div> 
+        <button type="submit" class="btn primary btn-block btn-lg text-uppercase btn-signin">sign in</button>
+        </div>
+     
+        <div class="my-3 text-center">
+          <a routerLink="/auth/signup" title="Or sign up">Or sign up</a>
+        </div>
+    </div>
+  </form>
+</div>

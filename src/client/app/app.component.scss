@@ -1,3 +1,47 @@
-h1 {
-  color: #14b004;
+.app,
+.app-content,
+.app-header,
+.app-body,
+.app-footer {
+    position: relative;
+    margin: 0;
+}
+
+.app-header {
+    position: relative;
+    background: #28292b;
+    height: 300px;
+    .logo {
+        padding: 63px 0;
+    }
+    &.single-layout {
+        height: 130px;
+        .logo {
+            padding: 28px 0;
+        }
+        .nav-wrapper {
+            padding: 12px 0;
+        }
+        @media (max-width: 575px) {
+            height: 100px;
+        }
+    }
+    .main-nav {
+        >.nav-link {
+            color: #676767;
+        }
+    }
+    .right-nav {
+        .nav-link {
+            text-transform: uppercase;
+        }
+    }
+    .search-wrapper {
+        margin-top: 12px;
+    }
+}
+
+.app-body {
+    padding-top: 35px;
+    padding-bottom: 35px;
 }

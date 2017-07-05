@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.title = 'Set dynamic title does works';
+    
     const defaultLanguage = this.config.getSettings('i18n.defaultLanguage');
 
     // add available languages & set default language

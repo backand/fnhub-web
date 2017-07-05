@@ -2,9 +2,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  template: `<p>
-  Reset Password Component
-  </p>`
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent {
 }

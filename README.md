@@ -45,3 +45,8 @@ http://localhost:1337
 
 # Server Side Rendering 
 http://localhost:8000
+
+
+# warning/ Issues
+>(node:35438) DeprecationWarning: Chunk.modules is deprecated. Use Chunk.getNumberOfModules/mapModules/forEachModule/containsModule instead.
+https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/494

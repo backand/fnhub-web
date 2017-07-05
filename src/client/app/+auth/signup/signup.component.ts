@@ -2,9 +2,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  template: `<p>
-  SignupComponent Page
-  </p>`
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
 }

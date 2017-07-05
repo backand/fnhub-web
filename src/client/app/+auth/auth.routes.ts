@@ -2,10 +2,10 @@
 import { Routes } from '@angular/router';
 
 // components
-import { SignInComponent } from './signin.component';
-import { SignupComponent } from './signup.component';
-import { ForgotPasswordComponent } from './forgot-password.component';
-import { ResetPasswordComponent } from './reset-password.component';
+import { SignInComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 export const routes: Routes = [
   {

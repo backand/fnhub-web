@@ -36,6 +36,10 @@ const browserConfig = function(root, settings) {
         {
           from: `${root(settings.paths.src.client.assets.root)}/i18n/fr.json`,
           to: './i18n/fr.json'
+        },
+         {
+          from: `${root(settings.paths.src.client.assets.root)}/img`,
+          to: './img'
         }
       ]),
 
