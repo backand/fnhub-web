@@ -6,6 +6,7 @@ Publish and consume lambda functions.
 - Install Node latest version
 - NPM or YARN 
 - npm install gulp -g
+- npm install typescript@2.3.4 -g
 
 >= @angular v4.0.0`
 >=Typescript v2.1.6` (Recommended 2.3.4)
