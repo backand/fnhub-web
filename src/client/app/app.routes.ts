@@ -15,6 +15,10 @@ export const routes: Routes = [
       {
         path: 'auth',
         loadChildren: './+auth/auth.module#AuthModule'
+      },
+      {
+        path: 'module',
+        loadChildren: './+modules/modules.module#ModulesModule'
       }
     ],
     canActivateChild: [MetaGuard],
