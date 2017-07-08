@@ -55,3 +55,23 @@
         display: none;
     }
 }
+
+.list {
+    &.small {
+        &.sidebar-list {
+            .list-item {
+                border: 0 none;
+                padding: 8px 0;
+                .list-left {
+                    padding-right: 5px;
+                    +.list-body {
+                        margin-left: 40px;
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

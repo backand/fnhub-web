@@ -13,7 +13,7 @@ Publish and consume lambda functions.
 
 ## Installation
 ```
-# clone the repo
+# clone the Repo
 git clone https://github.com/backand/fnhub-web.git
 cd fnhub-web
 
@@ -41,7 +41,7 @@ npm run build:universal-prod
 npm run serve
 ```
 
-# Client Side Rendering 
+# Client Side Rendering
 http://localhost:1337
 
 # Server Side Rendering 
