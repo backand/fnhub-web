@@ -6,6 +6,9 @@ import { ConfigService } from '@ngx-config/core';
 import { MetaService } from '@ngx-meta/core';
 // import { I18NRouterService } from '@ngx-i18n-router/core';
 import { TranslateService } from '@ngx-translate/core';
+import { BackandService } from '@backand/angular2-sdk';
+
+import { SearchModuleComponent } from './search-field.component'
 
 // external styles
 import '../assets/sass/layout.scss';
@@ -19,13 +22,14 @@ export class AppComponent implements OnInit {
   title: string;
 
   constructor(private readonly config: ConfigService,
-              private readonly translate: TranslateService,
-              private readonly meta: MetaService) { // ,
-              // private readonly i18nRouter: I18NRouterService) {
+    private readonly translate: TranslateService,
+    private readonly meta: MetaService,
+    private backand: BackandService) { // ,
+    // private readonly i18nRouter: I18NRouterService) {
   }
 
   ngOnInit(): void {
-    
+
     const defaultLanguage = this.config.getSettings('i18n.defaultLanguage');
 
     // add available languages & set default language
@@ -38,6 +42,13 @@ export class AppComponent implements OnInit {
     // this.i18nRouter.init();
 
     this.setLanguage(defaultLanguage);
+
+    this.backand.init({
+      appName: 'funhub',
+      anonymousToken: 'f10673bb-d12a-4245-8eca-312add606059',
+    });
+
+
   }
 
   private setLanguage(language: any): void {

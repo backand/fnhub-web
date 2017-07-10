@@ -19,10 +19,15 @@ import { MetaLoader, MetaModule, MetaStaticLoader } from '@ngx-meta/core';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+
+import { SharedModule } from './shared/shared.module';
 // routes & components
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 import { ChangeLanguageComponent } from './change-language.component';
+
+// Backand
+import { BackandService } from '@backand/angular2-sdk';
 
 // for AoT compilation
 export function configFactory(platformId: any, http: Http): ConfigLoader {
@@ -88,14 +93,19 @@ export function translateFactory(platformId: any, http: Http): TranslateLoader {
         useFactory: (translateFactory),
         deps: [PLATFORM_ID, Http]
       }
-    })
+    }),
+    SharedModule.forRoot()
   ],
   // providers: [
   //   I18N_ROUTER_PROVIDERS
   // ],
+  providers: [
+    BackandService
+    //   I18N_ROUTER_PROVIDERS
+    ],
   declarations: [
     AppComponent,
-    ChangeLanguageComponent
+    ChangeLanguageComponent,
   ],
   exports: [AppComponent],
   bootstrap: [AppComponent]
