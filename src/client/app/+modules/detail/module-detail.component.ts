@@ -1,5 +1,5 @@
 // angular
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BackandService } from '@backand/angular2-sdk';
 import * as _ from 'lodash';
@@ -8,16 +8,16 @@ import * as _ from 'lodash';
   templateUrl: './module-detail.component.html',
   styleUrls: ['./module-detail.component.scss']
 })
-export class ModuleDetailComponent {
+export class ModuleDetailComponent implements OnInit {
   routeEvent: any;
-  moduleId : any;
-  module : any;
+  moduleId: any;
+  module: any;
 
   constructor(private backand: BackandService,
     private route: ActivatedRoute) {
   }
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.routeEvent = this.route
       .queryParams
       .subscribe(params => {
@@ -27,7 +27,11 @@ export class ModuleDetailComponent {
       });
   }
 
-  getModule(){
+  ngOnDestroy() {
+    this.routeEvent.unsubscribe();
+  }
+
+  getModule() {
     this.backand.fn.get("getModule", {
       "id": this.moduleId
     }).then((res: any) => {

@@ -8,7 +8,7 @@ import * as _ from 'lodash';
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  searchQuery: string = '';
+  searchQuery: string;
   routeEvent: any;
   modules: any = [];
 
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.routeEvent.unsubscribe();
   }
 
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     this.backand.fn.get("keywordsSearch", {
       "q": this.searchQuery
     }).then((res: any) => {
-      this.modules = _.get(res, 'data');
+      this.modules = _.get(res, 'data.data');
     })
   }
 

@@ -1,6 +1,7 @@
 // angular
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -12,13 +13,28 @@ import { Router } from '@angular/router';
                   </span>
 </div>`
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
   searchQuery: string = '';
+  routeEvent: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    private route: ActivatedRoute) {
   }
 
-  searchModules() {
+  ngOnInit(): void {
+    this.routeEvent = this.route
+      .queryParams
+      .subscribe(params => {
+        this.searchQuery = params['q'] || '';
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.routeEvent.unsubscribe();
+  }
+
+
+  searchModules(): void {
     this.router.navigate(['/'], { queryParams: { q: this.searchQuery } });
   }
 
