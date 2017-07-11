@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     this.backand.fn.get("keywordsSearch", {
       "q": this.searchQuery
     }).then((res: any) => {
-      this.modules = _.get(res, 'data.data');
+      this.modules = _.get(res, 'data');
     })
   }
 

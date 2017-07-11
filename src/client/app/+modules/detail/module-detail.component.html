@@ -2,18 +2,8 @@
   <div class="row">
 
     <div class="col-md-9">
-      <h2 class="page-heading"> <i class="fa fa-star fa-fw text-primary"></i> @backand/vanilla-sdk</h2>
-      <div class="page-content m-t-md text-gray-lt">
-        <p>Backand SDK for JavaScript. This SDK enables you to communicate comfortably and quickly with your Backand app. It
-          requires zero configurations, no installations and no requirements.</p>
-
-        <h4 class="m-t-md m-b-sm">Overview</h4>
-        <p>Backand's Vanilla SDK is designed for easy integration with plain JavaScript applications, as well as other applications
-          that do not make use of any particular JavaScript framework. If you are working with Angular 1, Angular 2, or Redux,
-          we provide the following wrapper SDKs:</p>
-
-        <p>If you are not working with the above platforms, you can simply use this SDK directly with any web application -
-          simply include the SDK in your client-side code, then get started!</p>
+      <h2 class="page-heading" *ngIf="this.module.name"> <i class="fa fa-star fa-fw text-primary"></i> {{this.module.name}}</h2>
+      <div class="page-content m-t-md text-gray-lt" [innerHTML]="module_detail">
       </div>
     </div>
 
@@ -31,7 +21,7 @@
                 <img src="/assets/img/avatar/avatar.png" class="w-32 circle img-thumbnail">
               </div>
               <div class="list-body">
-                <span class="text-primary">itay</span> <span class="text-gray-lt">updated 1 week ago</span>
+                <span class="text-primary">{{moduleAuthor.fullName}}</span> <span class="text-gray-lt">updated at {{this.module.updatedAt}}</span>
               </div>
             </li>
             <li class="list-item">
@@ -47,26 +37,40 @@
                 <i class="fa fa-github fa-fw fa-2x"></i>
               </div>
               <div class="list-body">
-                <a href="" class="_600">github.com/backand/vanilla-sdk</a>
+                <a href="{{this.module.githubRepo}}" target="_blank" class="_600">{{this.module.githubRepo}}</a>
               </div>
             </li>
           </ul>
         </div>
 
-        <div class="sidebar-item">
+        <!--div class="sidebar-item">
           <div class="sidebar-item-heading">collaboators <a href="" class="pull-right text-primary">All</a></div>
           <div>
             <img src="/assets/img/avatar/avatar.png" class="w-48 circle img-thumbnail m-r-sm"> <img src="/assets/img/avatar/avatar04.png"
               class="w-48 circle img-thumbnail m-r-sm"><img src="/assets/img/avatar/avatar2.png" class="w-48 circle img-thumbnail m-r-sm">
             <img src="/assets/img/avatar/avatar3.png" class="w-48 circle img-thumbnail">
           </div>
+        </div -->
+
+        <div class="sidebar-item">
+          <div class="sidebar-item-heading">Language</div>
+          <ul class="nav flex-column">
+            <li class="nav-item" *ngFor="let language of languages">
+              <span class="nav-link" [ngClass]="{'text-primary': language.isSelected}"><i class="fa fa-caret-right" aria-hidden="true" *ngIf="language.isSelected"></i> {{language.name}}</span>
+            </li>
+          </ul>
         </div>
 
-
+        <div class="sidebar-item">
+          <div class="sidebar-item-heading">Keywords</div>
+          <p *ngIf="module.keywords.length === 0">No keyword</p>
+          <ul class="nav flex-column">
+            <li class="nav-item" *ngFor="let keyword of module.keywords">
+               <span  class="nav-link">{{keyword}}</span>
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
-
-
-
   </div>
 </div>
