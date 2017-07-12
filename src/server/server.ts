@@ -10,6 +10,7 @@ import { enableProdMode } from '@angular/core';
 import * as express from 'express';
 import * as compression from 'compression';
 import { ngExpressEngine } from '@ngx-universal/express-engine';
+import * as backand from '@backand/nodejs-sdk'
 
 // module
 import { AppServerModule } from './app/app.server.module';
@@ -25,6 +26,15 @@ server.engine('html', ngExpressEngine({
   bootstrap: AppServerModule
 }));
 
+/**
+ * Enable backand
+ */
+
+backand.init({
+  appName: 'funhub',
+  anonymousToken: 'f10673bb-d12a-4245-8eca-312add606059',
+})
+
 server.set('view engine', 'html');
 server.set('views', 'public');
 
@@ -36,6 +46,17 @@ server.use('/', express.static('public', {index: false}));
 /**
  * Catch all routes and return the `index.html`
  */
+server.get('/module/:slug', (req, res) => {
+      backand.fn.get("getModule", {
+      "name": 'twilio-node-template'
+    }).then((res: any) => {
+      res.render('../public/index.html', {
+        req,
+        res
+      });
+    });
+});
+
 server.get('*', (req, res) => {
   res.render('../public/index.html', {
     req,

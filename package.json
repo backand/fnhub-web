@@ -38,6 +38,7 @@
     "@angular/router": "~4.2.0",
     "@angularclass/bootloader": "^1.0.1",
     "@backand/angular2-sdk": "^1.2.6",
+    "@backand/nodejs-sdk": "^1.2.8",
     "@ngx-cache/core": "~0.4.0-beta.2",
     "@ngx-cache/fs-storage": "~0.4.0-beta.2",
     "@ngx-cache/platform-browser": "~0.4.0-beta.2",
