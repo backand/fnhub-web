@@ -4,6 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { BackandService } from '@backand/angular2-sdk';
 import * as _ from 'lodash';
 
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+
+
 import { AppService } from '../../shared/app.service';
 
 @Component({
@@ -22,7 +27,8 @@ export class ModuleDetailComponent implements OnInit {
 
   constructor(private backand: BackandService,
     private route: ActivatedRoute,
-    private appService: AppService) {
+    private appService: AppService,
+    private http: Http) {
   }
 
   ngOnInit(): void {
@@ -39,21 +45,23 @@ export class ModuleDetailComponent implements OnInit {
   }
 
   private getModule(): void {
-    this.backand.fn.get("getModule", {
-      "name": this.moduleName
-    }).then((res: any) => {
-      this.module = _.get(res, 'data.data[0]');
-      if (this.module.githubRepo) {
-        let readmeUri = _.replace(this.module.githubRepo, /github.com/gi, 'raw.githubusercontent.com') + '/master/README.md';
-        this.readMDfile(readmeUri);
-      } else {
-        this.module_detail = 'No description found';
-      }
-      this.moduleAuthor = _.get(res, 'data.relatedObjects.users.' + this.module.creator);
-      this.setSelectedLanguages(this.module.language);
 
-      this.module.keywords = this.transformKeywords(this.module.keywords);
-    })
+    this.http.get(`http://localhost:8000/api/module/${this.moduleName}`)
+      .map(response => response.json())
+      .subscribe(res => {
+        this.module = _.get(res, 'data.data[0]');
+        if (this.module.githubRepo) {
+          let readmeUri = _.replace(this.module.githubRepo, /github.com/gi, 'raw.githubusercontent.com') + '/master/README.md';
+          this.readMDfile(readmeUri);
+        } else {
+          this.module_detail = 'No description found';
+        }
+        this.moduleAuthor = _.get(res, 'data.relatedObjects.users.' + this.module.creator);
+        this.setSelectedLanguages(this.module.language);
+
+        this.module.keywords = this.transformKeywords(this.module.keywords);
+      });
+
   }
 
   private readMDfile(mdFileUri: string): void {

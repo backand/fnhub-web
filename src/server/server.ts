@@ -19,6 +19,7 @@ enableProdMode();
 const server = express();
 server.use(compression());
 
+var router = express.Router();
 /**
  * Set view engine
  */
@@ -41,32 +42,27 @@ server.set('views', 'public');
 /**
  * Point static path to `public`
  */
-server.use('/', express.static('public', {index: false}));
 
-/**
- * Catch all routes and return the `index.html`
- */
-server.get('/module/:slug', (req, res) => {
-    console.log('module/:slug')
-    backand.fn.get("getModule", {
-      "name": 'twilio-node-template'
-      }).then((res1: any) => {
-        console.log(res1);
-        res.render('../public/index.html', {
-          req,
-          res
-        });
-    });
-    
+
+server.use('/api', router);
+
+// middleware to use for all requests
+router.use(function (req, res, next) {
+  // do logging
+  console.log('Something is happening.');
+  next(); // make sure we go to the next routes and don't stop here
 });
 
-// server.get('/module/:slug', (req, res) => {
-//   res.render('../public/index.html', {
-//       req,
-//       res
-//     });
-// });
+router.route('/module/:module_name').get(function (req: any, res: any) {
+  backand.fn.get("getModule", {
+    "name": req.params.module_name
+  }).then((res1: any) => {
+    console.log(res1);
+    res.json(res1);
+  });
+});
 
+server.use('/', express.static('public', { index: false }));
 server.get('*', (req, res) => {
   res.render('../public/index.html', {
     req,
