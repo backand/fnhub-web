@@ -11,6 +11,7 @@ import * as express from 'express';
 import * as compression from 'compression';
 import { ngExpressEngine } from '@ngx-universal/express-engine';
 import * as backand from '@backand/nodejs-sdk'
+import * as _ from 'lodash';
 
 // module
 import { AppServerModule } from './app/app.server.module';
@@ -53,14 +54,29 @@ router.use(function (req, res, next) {
   next(); // make sure we go to the next routes and don't stop here
 });
 
+
 router.route('/module/:module_name').get(function (req: any, res: any) {
   backand.fn.get("getModule", {
     "name": req.params.module_name
-  }).then((res1: any) => {
-    console.log(res1);
-    res.json(res1);
+  }).then((response: any) => {
+    let m = _.get(response, 'data.data[0]');
+    let repoURL: string = _.get(m, 'githubRepo') as string;
+    if (repoURL) {
+      let readmeUri = _.replace(repoURL, /github.com/gi, 'raw.githubusercontent.com') + '/master/README.md';
+      backand.fn.get("mdToHtml", {
+        "mdFileUri": readmeUri //"https://github.com/ivogabe/gulp-typescript/blob/master/readme.md"
+      }).then((rs: any) => {
+        response.data['module_details'] = rs.data;
+        res.json(response);
+      });
+    } else {
+      response['module_details'] = 'No description found';
+      res.json(response);
+    }
   });
 });
+
+
 
 server.use('/', express.static('public', { index: false }));
 server.get('*', (req, res) => {
@@ -87,3 +103,10 @@ server.listen(server.get('port'), () => {
   // tslint:disable-next-line
   console.log(`Express server listening on ${baseUrl}`);
 });
+
+
+function readMDfile(mdFileUri: string): void {
+  return backand.fn.get("mdToHtml", {
+    "mdFileUri": mdFileUri //"https://github.com/ivogabe/gulp-typescript/blob/master/readme.md"
+  })
+}

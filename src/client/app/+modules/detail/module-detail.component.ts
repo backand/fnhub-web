@@ -21,7 +21,7 @@ export class ModuleDetailComponent implements OnInit {
   module: any = {
     keywords: []
   };
-  module_detail: string;
+  module_detail: string = '';
   moduleAuthor: object = {};
   languages: Array<Object> = [];
 
@@ -50,26 +50,13 @@ export class ModuleDetailComponent implements OnInit {
       .map(response => response.json())
       .subscribe(res => {
         this.module = _.get(res, 'data.data[0]');
-        if (this.module.githubRepo) {
-          let readmeUri = _.replace(this.module.githubRepo, /github.com/gi, 'raw.githubusercontent.com') + '/master/README.md';
-          this.readMDfile(readmeUri);
-        } else {
-          this.module_detail = 'No description found';
-        }
         this.moduleAuthor = _.get(res, 'data.relatedObjects.users.' + this.module.creator);
         this.setSelectedLanguages(this.module.language);
+        this.module_detail = _.get(res, 'data.module_details') as string;
 
         this.module.keywords = this.transformKeywords(this.module.keywords);
       });
 
-  }
-
-  private readMDfile(mdFileUri: string): void {
-    this.backand.fn.get("mdToHtml", {
-      "mdFileUri": mdFileUri //"https://github.com/ivogabe/gulp-typescript/blob/master/readme.md"
-    }).then((res: any) => {
-      this.module_detail = res.data;
-    });
   }
 
   private setSelectedLanguages(languages: string): void {
