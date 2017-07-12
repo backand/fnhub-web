@@ -47,15 +47,25 @@ server.use('/', express.static('public', {index: false}));
  * Catch all routes and return the `index.html`
  */
 server.get('/module/:slug', (req, res) => {
-      backand.fn.get("getModule", {
+    console.log('module/:slug')
+    backand.fn.get("getModule", {
       "name": 'twilio-node-template'
-    }).then((res: any) => {
-      res.render('../public/index.html', {
-        req,
-        res
-      });
+      }).then((res1: any) => {
+        console.log(res1);
+        res.render('../public/index.html', {
+          req,
+          res
+        });
     });
+    
 });
+
+// server.get('/module/:slug', (req, res) => {
+//   res.render('../public/index.html', {
+//       req,
+//       res
+//     });
+// });
 
 server.get('*', (req, res) => {
   res.render('../public/index.html', {
