@@ -116,3 +116,4 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 client/.awcache
+server/vendor

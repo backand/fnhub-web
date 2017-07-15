@@ -1,16 +1,15 @@
 {
-  "name": "angular-starter",
+  "name": "fnhub",
   "version": "6.0.0",
-  "description": "An Angular Webpack Starter kit featuring Angular (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
+  "description": "fnhub - publish and consume AWS lambda functions",
   "keywords": [
-    "angular",
     "angular2",
     "angular4",
     "webpack",
     "typescript"
   ],
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "homepage": "https://github.com/AngularClass/angular-starter",
+  "author": "Mohan Singh <mslogicmaster@gmail.com>",
+  "homepage": "https://github.com/backand/fnhub-web",
   "license": "MIT",
   "scripts": {
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && cross-env BUILD_AOT=1 npm run webpack -- --config config/webpack.prod.js  --progress --profile --bail",
@@ -88,6 +87,7 @@
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
+    "html-elements-webpack-plugin": "^1.0.1",
     "http-server": "^0.9.0",
     "ie-shim": "^0.1.0",
     "lodash": "^4.17.4",
@@ -109,15 +109,15 @@
     "awesome-typescript-loader": "~3.1.2",
     "codelyzer": "~2.1.1",
     "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.28.0",
     "cross-env": "^5.0.0",
+    "css-loader": "^0.28.0",
     "exports-loader": "^0.6.4",
     "expose-loader": "^0.7.3",
     "extract-text-webpack-plugin": "~2.1.0",
     "file-loader": "^0.11.1",
     "find-root": "^1.0.0",
     "gh-pages": "^1.0.0",
-    "html-webpack-plugin": "^2.28.0",
+    "html-webpack-plugin": "^2.29.0",
     "imports-loader": "^0.7.1",
     "inline-manifest-webpack-plugin": "^3.0.1",
     "istanbul-instrumenter-loader": "2.0.0",
@@ -165,10 +165,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AngularClass/angular-starter.git"
+    "url": "https://github.com/backand/fnhub-web.git"
   },
   "bugs": {
-    "url": "https://github.com/AngularClass/angular-starter/issues"
+    "url": "https://github.com/backand/fnhub-web/issues"
   },
   "engines": {
     "node": ">= 4.2.1",

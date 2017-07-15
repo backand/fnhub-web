@@ -23,20 +23,54 @@ git clone https://github.com/backand/fnhub-web.git
 # change directory to our repo
 cd fnhub-web
 
-# WINDOWS only. In terminal as administrator
-npm install -g node-pre-gyp
+# install dependencies
+./install.sh -FNHUB_ENV dev
 
-# install the repo with npm
-npm install
+# build project
+./build.sh -FNHUB_ENV dev (Local development)
+./build.sh -FNHUB_ENV prod
 
-# start the server
-npm start
+```
 
-# use Hot Module Replacement
-npm run server:dev:hmr
+### Deployment on server
+```bash
 
-# if you're in China use cnpm
-# https://github.com/cnpm/cnpm
+Option 1- If you have an access to server, 
+
+- login to server using ssh
+- Install git
+- install composer
+- install node
+- and other global dependecies , follow Dependencies or Prerequisites
+# clone our repo
+git clone https://github.com/backand/fnhub-web.git
+# change directory to our repo
+cd fnhub-web
+# install dependencies
+./install.sh -FNHUB_ENV prod
+# build project
+./build.sh -FNHUB_ENV prod
+
+and point your domain to public directory
+example : 
+http:www.fnhub.io ----> /fnhub-web/server/public
+
+
+Option 2-
+
+# clone repo to your local system
+git clone https://github.com/backand/fnhub-web.git
+# change directory to our repo
+cd fnhub-web
+# install dependencies
+./install.sh -FNHUB_ENV prod
+# build project
+./build.sh -FNHUB_ENV prod
+
+Now upload `/server` directory to your server
+and point your domain to public directory
+example : 
+http:www.fnhub.io ----> /server/public
 ```
 
 # Best Practices
