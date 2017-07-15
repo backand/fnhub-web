@@ -1,0 +1,66 @@
+<div class="container page-home">
+  <div class="row no-gutters">
+    <div class="col-md-2 sidebar">
+      <nav>
+        <div class="sidebar-item">
+          <div class="sidebar-item-heading">Sort Results</div>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Best Match</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Quality</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Popularity</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Maintenance</a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-item-heading">Language</div>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="#">JavaScript</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Python</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Java</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">PHP</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="col-md-10">
+      <div class="list-container">
+      <h2 class="page-heading" *ngIf="searchQuery">{{modules.length}} Packages found for <span class="text-primary">{{searchQuery}}</span></h2>
+      <ul class="list package-list">
+        <li class="list-item" *ngFor="let module of modules">
+          <div class="list-body">
+            <h5><a href="./module/{{module.name}}" class="_600" title="{{module.name}}">{{module.name}}</a></h5>
+            <div><span class="text-gray-lt small">by: </span><a href="">{{module.fullName}}</a></div>
+            <p class="text-gray-lt">{{module.description}}</p>
+            <div class="text-gray-lt"><i class="fa fa-code-fork fa-fw" aria-hidden="true"></i><span>2.3.1</span></div>
+          </div>
+        </li>
+        <!-- li class="list-item">
+          <div class="list-body">
+            <h5><a routerLink="/module/1" class="_600">template-mailer-aws-lambda</a></h5>
+            <div><span class="text-gray-lt small">by: </span><a href="">coderbyheart</a></div>
+            <p class="text-gray-lt">A transactional email mailer that runs on AWS lambda and sends emails via SES</p>
+            <div class="text-gray-lt"><i class="fa fa-code-fork fa-fw" aria-hidden="true"></i><span>3.3.1</span></div>
+          </div>
+        </li -->
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>

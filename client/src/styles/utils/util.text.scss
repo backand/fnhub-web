@@ -1,0 +1,52 @@
+
+.text-white {
+  color: $dark-white !important;
+}
+.text-black {
+  color: $gray-dark;
+}
+
+.text-muted {
+  color: inherit !important;
+  opacity: 0.6;
+}
+
+.text-gray-lt{
+  color : $gray-light;
+}
+
+._100{
+  font-weight: 100;
+}
+._200{
+  font-weight: 200;
+}
+._300{
+  font-weight: 300;
+}
+._400{
+  font-weight: 400;
+}
+._500{
+  font-weight: 500;
+}
+._600{
+  font-weight: 600;
+}
+._700{
+  font-weight: 700;
+}
+._800{
+  font-weight: 800;
+}
+
+.text-ellipsis{
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+.text-shadow{
+  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+}
