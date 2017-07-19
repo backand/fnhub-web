@@ -30,6 +30,9 @@ cd fnhub-web
 ./build.sh -FNHUB_ENV dev (Local development)
 ./build.sh -FNHUB_ENV prod
 
+# Run
+php artisan serve
+
 ```
 
 ### Deployment on server
@@ -39,7 +42,7 @@ Option 1- If you have an access to server,
 
 - login to server using ssh
 - Install git
-- install composer
+- install composer (php composer.phar install)
 - install node
 - and other global dependecies , follow Dependencies or Prerequisites
 # clone our repo

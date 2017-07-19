@@ -73,6 +73,8 @@ dll/
 Homestead.yaml
 Homestead.json
 .idea/
+.cache/
+.server/
 npm-debug.log
 public/storage
 public/views
@@ -81,6 +83,10 @@ public/fonts
 public/css
 public/build
 server/vendor
+server/bootsrap/cache
+server/public/*
+
+public/
 
 client/.awcache
 *.js
