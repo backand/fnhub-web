@@ -54,7 +54,8 @@ npm-debug.log
 .webpack.json
 /compiled/
 dll/
-
+www/*
+!www/index.php
 # Doc #
 /doc/
 
@@ -85,3 +86,5 @@ server/vendor
 client/.awcache
 *.js
 server/public/assets/sass/
+www/server
+www/build

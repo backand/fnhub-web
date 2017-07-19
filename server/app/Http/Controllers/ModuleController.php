@@ -38,7 +38,7 @@ class ModuleController extends Controller
             ->withOption('ENCODING', 'gzip')
             ->asJson()
             ->returnResponseObject()
-            ->enableDebug('/Applications/MAMP/htdocs/backand-projects/fnhub/server/storage/logs/logFile.txt')
+            ->enableDebug(storage_path()+'/logs/logFile.txt')
             ->post();
         if (isset($response->content) && !is_null($response->content) && $response->status == 200) {
             $server_output_json = json_decode(json_encode($response->content), true);
@@ -62,7 +62,7 @@ class ModuleController extends Controller
                         ->withOption('RETURNTRANSFER', '1')
                         ->asJson()
                         ->returnResponseObject()
-                        ->enableDebug('/Applications/MAMP/htdocs/backand-projects/fnhub/server/storage/logs/logFile.txt')
+                        ->enableDebug(storage_path()+'/logs/logFile.txt')
                         ->post();
 
                     if (isset($response->content) && !is_null($response->content) && $response->status == 200) {

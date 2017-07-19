@@ -1,8 +1,10 @@
 # fnhub
 Publish and consume lambda functions.
 
+
 ## Dependencies or Prerequisites
 What you need to run this app:
+* composer (https://getcomposer.org/doc/00-intro.md)
 * `node` and `npm` (`brew install node`)
 * Ensure you're running the latest versions Node `v6.x.x`+ (or `v7.x.x`) and NPM `3.x.x`+
 
@@ -31,6 +33,8 @@ cd fnhub-web
 ./build.sh -FNHUB_ENV prod
 
 ```
+php artisan serve
+
 
 ### Deployment on server
 ```bash
@@ -67,10 +71,10 @@ cd fnhub-web
 # build project
 ./build.sh -FNHUB_ENV prod
 
-Now upload `/server` directory to your server
+Now upload all content of `/www` directory to your server
 and point your domain to public directory
 example : 
-http:www.fnhub.io ----> /server/public
+http:www.fnhub.io ----> /
 ```
 
 # Best Practices
