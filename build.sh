@@ -14,6 +14,23 @@ cd $dir/client
 npm install --unsafe-perm
 if [ "$FNHUB_ENV" == "prod" ]; then
     npm run build:prod
+    cd $dir
+    mv $dir/www/index.php index.php.saved
+    rm -rf $dir/www/*
+    # update project/ to your directory name
+    printf "Creating bundle\n"
+    cp -a $dir/server/public/* www/
+    rm -rf $dir/www/index.php
+    mv index.php.saved $dir/www/index.php
+    printf "Moving laravel application to /www\n"
+    cp -r $dir/server/ $dir/www/server
+    printf "Removing unecessary code\n"
+    rm -rf $dir/www/server/database
+    rm -rf $dir/www/server/public
+    rm -f $dir/www/.env
+    rm -f $dir/www/.env.example
+    printf "www directory is ready, Copy the content from www and deploy on your server\n"
+    
 fi
 
 if [ "$FNHUB_ENV" == "dev" ]; then
