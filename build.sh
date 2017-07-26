@@ -16,12 +16,16 @@ if [ "$FNHUB_ENV" == "prod" ]; then
     npm run build:prod
     cd $dir
     mv $dir/www/index.php index.php.saved
+    cp -a $dir/www/.git/* $dir/tmp/.git/
     rm -rf $dir/www/*
     # update project/ to your directory name
     printf "Creating bundle\n"
     cp -a $dir/server/public/* www/
     rm -rf $dir/www/index.php
     mv index.php.saved $dir/www/index.php
+    mv index.php.saved $dir/www/index.php
+    cp -a $dir/tmp/.git/* $dir/www/.git/
+    rm -rf $dir/tmp
     printf "Moving laravel application to /www\n"
     cp -r $dir/server/ $dir/www/server
     printf "Removing unecessary code\n"
