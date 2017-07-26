@@ -14,7 +14,12 @@
 
 Route::group(['middleware' => ['web']], function () {
       Route::get('/', function () {
-        return view('welcome');
+        return view('home');
     });
     Route::get('/module/{module_name}', 'ModuleController@show');
+
+    Route::get('/auth/signin', 'AuthController@signin');
+    Route::get('/auth/signup', 'AuthController@signup');
+    Route::get('/auth/reset-password', 'AuthController@resetPassword');
+    Route::get('/auth/forgot-password','AuthController@forgotPassword');
 });
