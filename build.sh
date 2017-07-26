@@ -10,6 +10,7 @@ printf "Building on $FNHUB_ENV\n"
 composer=$(which composer)
 cd $dir/server
 $composer install
+php artisan cache:clear
 cd $dir/client
 npm install --unsafe-perm
 if [ "$FNHUB_ENV" == "prod" ]; then
@@ -33,6 +34,12 @@ if [ "$FNHUB_ENV" == "prod" ]; then
     rm -rf $dir/www/server/public
     rm -f $dir/www/.env
     rm -f $dir/www/.env.example
+
+    printf "applying permissions on bootstrap and storage\n"
+    chmod -R 777 $dir/www/server/storage
+    chown -R www-data:www-data $dir/www/server/storage
+    chmod -R 777 $dir/www/server/bootstrap
+    chown -R www-data:www-data $dir/www/server/bootstrap
     printf "www directory is ready, Copy the content from www and deploy on your server\n"
     
 fi
