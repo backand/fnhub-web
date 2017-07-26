@@ -151,5 +151,8 @@ import * as _ from 'lodash';
 ```
 ___
 
+//"chmod -R 777 /bootstrap",
+      //"chown -R www-data:www-data /bootstrap"
+
 # License
  [MIT](/LICENSE)
