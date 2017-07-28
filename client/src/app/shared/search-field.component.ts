@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { AppService} from '../shared/app.service';
 
 
 @Component({
@@ -17,8 +18,10 @@ export class SearchComponent implements OnInit {
   searchQuery: string = '';
   routeEvent: any;
 
-  constructor(private router: Router,
-    private route: ActivatedRoute) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private appService : AppService) {
   }
 
   ngOnInit(): void {
@@ -33,9 +36,12 @@ export class SearchComponent implements OnInit {
     this.routeEvent.unsubscribe();
   }
 
-
   searchModules(): void {
-    this.router.navigate(['/'], { queryParams: { q: this.searchQuery } });
+    if(window.location.pathname === '/'){
+        this.router.navigate(['/'], { queryParams: { q: this.searchQuery } });
+    }else{
+      this.appService.redirect('/?q='+this.searchQuery);
+    }
   }
 
 }

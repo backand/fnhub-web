@@ -28,18 +28,18 @@ if [ "$FNHUB_ENV" == "prod" ]; then
     cp -a $dir/tmp/.git/* $dir/www/.git/
     rm -rf $dir/tmp
     printf "Moving laravel application to /www\n"
-    cp -r $dir/server/ $dir/www/server
+    cp -r $dir/server/ $dir/www/fnhub_src
     printf "Removing unecessary code\n"
-    rm -rf $dir/www/server/database
-    rm -rf $dir/www/server/public
+    rm -rf $dir/www/fnhub_src/database
+    rm -rf $dir/www/fnhub_src/public
     rm -f $dir/www/.env
     rm -f $dir/www/.env.example
 
-    printf "applying permissions on bootstrap and storage\n"
-    chmod -R 777 $dir/www/server/storage
-    chown -R www-data:www-data $dir/www/server/storage
-    chmod -R 777 $dir/www/server/bootstrap
-    chown -R www-data:www-data $dir/www/server/bootstrap
+    # printf "applying permissions on bootstrap and storage\n"
+    # chmod -R 777 $dir/www/fnhub_src/storage
+    # chown -R www-data:www-data $dir/www/fnhub_src/storage
+    # chmod -R 777 $dir/www/fnhub_src/bootstrap
+    # chown -R www-data:www-data $dir/www/fnhub_src/bootstrap
     printf "www directory is ready, Copy the content from www and deploy on your server\n"
     
 fi

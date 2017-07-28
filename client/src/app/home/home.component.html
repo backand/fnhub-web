@@ -2,7 +2,7 @@
   <div class="row no-gutters">
     <div class="col-md-2 sidebar">
       <nav>
-        <div class="sidebar-item">
+        <!-- div class="sidebar-item">
           <div class="sidebar-item-heading">Sort Results</div>
           <ul class="nav flex-column">
             <li class="nav-item">
@@ -18,21 +18,12 @@
               <a class="nav-link" href="#">Maintenance</a>
             </li>
           </ul>
-        </div>
+        </div -->
         <div class="sidebar-item">
           <div class="sidebar-item-heading">Language</div>
           <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="#">JavaScript</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Python</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Java</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">PHP</a>
+            <li class="nav-item" *ngFor="let language of languages">
+              <a class="nav-link" [ngClass]="{'text-primary': language.selected}" href="#" (click)="selectLanguage(language.key,  $event)"><i class="fa fa-caret-right fa-fw" aria-hidden="true" *ngIf="language.selected"></i>{{language.name}} <i  aria-hidden="true" *ngIf="language.selected" class="fa fa-times pull-right"></i></a>
             </li>
           </ul>
         </div>

@@ -58,6 +58,7 @@
   </div>
 </div>
   <!-- Scripts will be injected by webpack here -->
-<script type="text/javascript" src="main.bundle.js" async></script><script type="text/javascript" src="polyfills.bundle.js"></script>
+<script type="text/javascript" src="polyfills.bundle.js"></script>
+<script type="text/javascript" src="main.bundle.js" async></script>
 </body>
 </html>
