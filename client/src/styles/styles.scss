@@ -9,6 +9,7 @@
 
 @import "header.scss";
 @import "module-search.scss";
+@import "syntax-highlight.scss";
 //set .container width to 1490 on larger devices
 @media (min-width: 1200px) {
     .container {
