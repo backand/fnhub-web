@@ -8,6 +8,7 @@
 @import "utils/utils.scss";
 
 @import "header.scss";
+@import "module-search.scss";
 //set .container width to 1490 on larger devices
 @media (min-width: 1200px) {
     .container {
@@ -124,3 +125,5 @@ textarea {
         }
     }
 }
+
+/** inject modules scss */

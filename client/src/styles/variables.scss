@@ -9,12 +9,4 @@ $border-color-lt: #e4e4e4;
 $border-color: $border-color-lt;
 $light :$border-color;
 $black: #141414;
-$font-family-sans-serif: 'Lato',
--apple-system,
-system-ui,
-BlinkMacSystemFont,
-"Segoe UI",
-Roboto,
-"Helvetica Neue",
-Arial,
-sans-serif !default;
+$font-family-sans-serif: 'Lato',-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif !default;
