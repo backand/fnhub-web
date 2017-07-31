@@ -10,6 +10,7 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 import { AppState } from './app.service';
 import { HeaderComponent } from './header';
+import { HeaderMenuComponent } from './header-menu';
 
 /**
  * App Component

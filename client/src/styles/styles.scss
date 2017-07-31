@@ -10,6 +10,7 @@
 @import "header.scss";
 @import "module-search.scss";
 @import "syntax-highlight.scss";
+@import "modal-sidebar.scss";
 //set .container width to 1490 on larger devices
 @media (min-width: 1200px) {
     .container {
@@ -53,6 +54,9 @@ textarea {
         box-shadow: none;
         border: 0 none;
         padding: 12px 35px;
+         @media (max-width: 480px) {
+          padding: 12px 8px;
+         }
         color: $dark-white;
         font-style: italic;
         font-size: 1.5rem;

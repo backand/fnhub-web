@@ -1,0 +1,60 @@
+$easing: cubic-bezier(.6, .05, .28, .91);
+$sidebar_width : 260px;
+.modal {
+    &.left,
+    &.right {
+        will-change: transform, opacity;
+        position: fixed;
+        overflow: auto;
+        top: 0px;
+        left: auto;
+        right: auto;
+        width: $sidebar_width;
+        opacity: 0;
+        padding: 20px 0px;
+        height: 100%;
+        background-color: #141414;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.48);
+        transition: all 350ms $easing;
+        .modal-dialog {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            .modal-content {
+                background: none;
+                border: 0 none;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+            }
+        }
+      .close{
+        opacity: 1;
+        color: #a8a8a8;
+        box-shadow: none;
+        font-weight: normal;
+        text-shadow: none;
+      }    
+    }
+    &.left {
+        left: -$sidebar_width;
+    }
+    &.right {
+        right: -$sidebar_width;
+    }
+    &.show {
+        opacity: 1;
+        &.left {
+            left: 0px;
+        }
+        &.right {
+            right: 0px;
+        }
+    }
+    .dropdown-divider {
+        margin: .5rem 1rem;
+        background-color: #343434;
+    }
+}

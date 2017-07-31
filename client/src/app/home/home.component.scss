@@ -6,8 +6,10 @@
         margin-bottom: 10px;
     }
     .list-container {
-      border-left: 1px solid #e4e4e4;
-      padding-left: 38px;
+        @media (min-width: 480px) {
+            border-left: 1px solid #e4e4e4;
+            padding-left: 38px;
+        }
         .list {
             &.package-list {
                 .list-item {

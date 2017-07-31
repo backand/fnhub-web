@@ -9,7 +9,6 @@ import { HttpModule } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 
-
 import {
   NgModule,
   ApplicationRef
@@ -29,14 +28,23 @@ import {
  * Platform and Environment providers/directives/pipes
  */
 import { ENV_PROVIDERS } from './environment';
+
+//third party modules
+import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { SearchComponent } from './shared/search-field.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
-import { XLargeDirective } from './home/x-large';
-import { HeaderComponent } from './header';
+import { 
+  HeaderComponent,
+   TopMenuComponent,
+   TopRightMenuComponent 
+  } from './header';
+import {
+  HeaderMenuSidebarComponent
+} from './modal-sidebars'; 
 import { SignInComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
@@ -77,12 +85,13 @@ const routes: Routes = [
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  //bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
     HomeComponent,
-    XLargeDirective,
     HeaderComponent,
+    HeaderMenuSidebarComponent,
+    TopMenuComponent,
+    TopRightMenuComponent,
     SignInComponent,
     SignupComponent,
     ResetPasswordComponent,
@@ -96,7 +105,8 @@ const routes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    SharedModule.forRoot()
+    SharedModule.forRoot(),
+    NgbModule.forRoot(),
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
@@ -106,16 +116,17 @@ const routes: Routes = [
     APP_PROVIDERS,
     BackandService,
     AppService,
+    NgbActiveModal
   ],
   entryComponents: [
     AppComponent,
     HomeComponent,
-    SearchComponent,
     HeaderComponent,
     SignInComponent,
     SignupComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    HeaderMenuSidebarComponent
   ]
 })
 export class AppModule {

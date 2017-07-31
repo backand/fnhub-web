@@ -1,61 +1,47 @@
 <header class="app-header" [ngClass]="{'center-layout': appState.get('layout') === 'center'}">
-      <div class="container" *ngIf="appState.get('layout') === 'center'">
-        <div class="row justify-content-md-center">
-          <div class="col-12 col-md-auto">
-            <div class="logo">
-              <a href="/" class="fnHub"><img src="/assets/img/logo.png"></a>
-            </div>
-          </div>
+  <div class="container" *ngIf="appState.get('layout') === 'center'">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-auto">
+        <div class="logo">
+          <a href="/" class="fnHub"><img src="/assets/img/logo.png"></a>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="container-fluid" *ngIf="appState.get('layout') !== 'center'">
-        <div class="row">
-          <div class="col col-lg-2 col-sm-2 logo-wrapper">
-            <div class="logo">
-              <a href="/" class="fnHub">
+  <div class="container-fluid" *ngIf="appState.get('layout') !== 'center'">
+    <div class="row">
+      <div class="col col-lg-2 col-sm-2 logo-wrapper">
+        <div class="logo">
+          <a href="/" class="fnHub">
               <img src="/assets/img/logo.png" class="hidden-xs-down">
               <img src="/assets/img/logo_mobile.png" class="hidden-sm-up">
               </a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="nav-wrapper">
-              <div class="row hidden-xs-down">
-                <div class="col">
-                  <div class="row justify-content-md-center">                
-                    <div class="col-12 col-md-auto">
-                      <nav class="nav main-nav">
-                        <a class="nav-link" href="#">features</a>
-                        <a class="nav-link" href="#">documentation</a>
-                        <a class="nav-link" href="#">support</a>
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-                <div class="col col-lg-3">
-                  <ul class="nav pull-right right-nav">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="/auth/signup">singup</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/auth/signin">login</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="row search-wrapper">
-                <div class="col">
-                  <app-search-module></app-search-module>
-                </div>
-              </div>
-            </div>
-
-          </div>
         </div>
       </div>
-      <!--
-      <a [href]="['change-language', 'en']">English</a>
-      <a [href]="['change-language', 'fr']">french</a>
-     -->
-    </header>
+      <div class="col">
+        <div class="nav-wrapper">
+          <div class="row hidden-xs-down">
+            <div class="col">
+              <div class="row justify-content-md-center">
+                <div class="col-12 col-md-auto">
+                  <top-menu [containerClass]="''"></top-menu>
+                </div>
+              </div>
+            </div>
+            <div class="col col-lg-3">
+              <top-right-menu [containerClass]="'pull-right'"></top-right-menu>
+            </div>
+          </div>
+          <div class="row search-wrapper">
+            <div class="col">
+              <app-search-module></app-search-module>
+            </div>
+            <div class="col bar hidden-sm-up" (click)="open(content)"><i class="fa text-primary fa-bars"></i></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
