@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit {
         let l = params['l'] || '';
         if(l){
           this.selected_languages = l.split(",");
+          this.setSelectedLanguage();
         }
         this.searchModules();
       });
@@ -78,7 +79,7 @@ export class HomeComponent implements OnInit {
     }
     
     this.selected_languages = _.uniq(this.selected_languages);
-    this.setSelectedLanguage(l);
+    this.setSelectedLanguage();
 
     let ls = _.cloneDeep(this.selected_languages);
     ls = ls.join(',');
@@ -94,7 +95,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  private setSelectedLanguage(sl: string) {
+  private setSelectedLanguage() {
     this.languages = _.map(this.languages, (l: any) => {
       var index = _.findIndex(this.selected_languages, (o: any) => { return _.lowerCase(o) == _.lowerCase(l.key); });
       l.selected = index >= 0 ? true : false;
