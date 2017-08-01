@@ -23,4 +23,16 @@
             }
         }
     }
+    .btn-wrapper {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .btn-filter {
+            border-radius: 0;
+            border: 0;
+            background: #28292b;
+            cursor: pointer;
+        }
+    }
 }

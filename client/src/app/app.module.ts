@@ -30,21 +30,25 @@ import {
 import { ENV_PROVIDERS } from './environment';
 
 //third party modules
-import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { SearchComponent } from './shared/search-field.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
-import { 
-  HeaderComponent,
-   TopMenuComponent,
-   TopRightMenuComponent 
-  } from './header';
 import {
-  HeaderMenuSidebarComponent
-} from './modal-sidebars'; 
+  HeaderComponent,
+  TopMenuComponent,
+  TopRightMenuComponent
+} from './header';
+import {
+  HeaderMenuSidebarComponent,
+  FiltersSidebarComponent
+} from './modal-sidebars';
+import {
+  LanguageFilterComponent
+} from './filters';
 import { SignInComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
@@ -90,12 +94,14 @@ const routes: Routes = [
     HomeComponent,
     HeaderComponent,
     HeaderMenuSidebarComponent,
+    FiltersSidebarComponent,
     TopMenuComponent,
     TopRightMenuComponent,
     SignInComponent,
     SignupComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    LanguageFilterComponent
   ],
   /**
    * Import Angular's modules.
@@ -126,7 +132,8 @@ const routes: Routes = [
     SignupComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    HeaderMenuSidebarComponent
+    HeaderMenuSidebarComponent,
+    FiltersSidebarComponent
   ]
 })
 export class AppModule {

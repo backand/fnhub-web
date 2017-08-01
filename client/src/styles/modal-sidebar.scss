@@ -1,5 +1,5 @@
 $easing: cubic-bezier(.6, .05, .28, .91);
-$sidebar_width : 260px;
+$sidebar_width: 260px;
 .modal {
     &.left,
     &.right {
@@ -13,7 +13,6 @@ $sidebar_width : 260px;
         opacity: 0;
         padding: 20px 0px;
         height: 100%;
-        background-color: #141414;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.48);
         transition: all 350ms $easing;
         .modal-dialog {
@@ -30,13 +29,19 @@ $sidebar_width : 260px;
                 margin: 0;
             }
         }
-      .close{
-        opacity: 1;
-        color: #a8a8a8;
-        box-shadow: none;
-        font-weight: normal;
-        text-shadow: none;
-      }    
+        .close {
+            opacity: 1;
+            color: #a8a8a8;
+            box-shadow: none;
+            font-weight: normal;
+            text-shadow: none;
+        }
+        &.dark {
+            background-color: #141414;
+        }
+        &.white {
+            background: #ffffff;
+        }
     }
     &.left {
         left: -$sidebar_width;

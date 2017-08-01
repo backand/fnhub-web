@@ -40,7 +40,7 @@ export class HeaderComponent {
    */
   open() {
     const modalRef = this.modalService.open(HeaderMenuSidebarComponent, {
-      windowClass: 'right',
+      windowClass: 'right dark',
       container: '.app-header'
     });
   }

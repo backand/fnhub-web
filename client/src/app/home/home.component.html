@@ -1,6 +1,6 @@
 <div class="container page-home">
   <div class="row no-gutters">
-    <div class="col-md-2 sidebar">
+    <div class="col-md-2 sidebar hidden-xs-down">
       <nav>
         <!-- div class="sidebar-item">
           <div class="sidebar-item-heading">Sort Results</div>
@@ -19,30 +19,23 @@
             </li>
           </ul>
         </div -->
-        <div class="sidebar-item">
-          <div class="sidebar-item-heading">Language</div>
-          <ul class="nav flex-column">
-            <li class="nav-item" *ngFor="let language of languages">
-              <a class="nav-link" [ngClass]="{'text-primary': language.selected}" href="#" (click)="selectLanguage(language.key,  $event)"><i class="fa fa-caret-right fa-fw" aria-hidden="true" *ngIf="language.selected"></i>{{language.name}} <i  aria-hidden="true" *ngIf="language.selected" class="fa fa-times pull-right"></i></a>
-            </li>
-          </ul>
-        </div>
+         <language-filter [source]="'inline'"></language-filter>
       </nav>
     </div>
 
     <div class="col-md-10">
       <div class="list-container">
-      <h2 class="page-heading" *ngIf="searchQuery">{{modules.length}} Packages found for <span class="text-primary">{{searchQuery}}</span></h2>
-      <ul class="list package-list">
-        <li class="list-item" *ngFor="let module of modules">
-          <div class="list-body">
-            <h5><a href="./module/{{module.name}}" class="_600" title="{{module.name}}">{{module.name}}</a></h5>
-            <div><span class="text-gray-lt small">by: </span><a href="">{{module.fullName}}</a></div>
-            <p class="text-gray-lt">{{module.description}}</p>
-            <div class="text-gray-lt"><i class="fa fa-code-fork fa-fw" aria-hidden="true"></i><span>{{module.latestVersion || '1.0.0'}}</span></div>
-          </div>
-        </li>
-        <!-- li class="list-item">
+        <h2 class="page-heading" *ngIf="searchQuery">{{modules.length}} Packages found for <span class="text-primary">{{searchQuery}}</span></h2>
+        <ul class="list package-list">
+          <li class="list-item" *ngFor="let module of modules">
+            <div class="list-body">
+              <h5><a href="./module/{{module.name}}" class="_600" title="{{module.name}}">{{module.name}}</a></h5>
+              <div><span class="text-gray-lt small">by: </span><a href="">{{module.fullName}}</a></div>
+              <p class="text-gray-lt">{{module.description}}</p>
+              <div class="text-gray-lt"><i class="fa fa-code-fork fa-fw" aria-hidden="true"></i><span>{{module.latestVersion || '1.0.0'}}</span></div>
+            </div>
+          </li>
+          <!-- li class="list-item">
           <div class="list-body">
             <h5><a routerLink="/module/1" class="_600">template-mailer-aws-lambda</a></h5>
             <div><span class="text-gray-lt small">by: </span><a href="">coderbyheart</a></div>
@@ -50,8 +43,11 @@
             <div class="text-gray-lt"><i class="fa fa-code-fork fa-fw" aria-hidden="true"></i><span>3.3.1</span></div>
           </div>
         </li -->
-      </ul>
+        </ul>
+      </div>
     </div>
-    </div>
+  </div>
+  <div class="hidden-sm-up btn-wrapper">
+    <button type="button" class="btn btn-secondary btn-lg btn-block btn-filter text-primary" (click)="open()"> <i class="fa fa-filter fa-fw" aria-hidden="true"></i>FILTER</button>
   </div>
 </div>
