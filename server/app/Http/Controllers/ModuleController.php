@@ -31,9 +31,15 @@ class ModuleController extends Controller
      */
     public function show($module_name)
     {
-        $module = array();
+        $module = array(
+            'name'=>'',
+            'updatedAt'=>'',
+            'githubRepo'=>'',
+            'language'=>'',
+            'keywords'=> []
+        );
         $detail = 'No content found';
-        $user = array();
+        $user = array('fullName'=>'');
         $response = Curl::to($this->REST_URL . '/1/function/general/getModule?parameters={"name":"' . $module_name . '"}')
             ->withHeader('AnonymousToken: ' . $this->ANONYMOUS_TOKEN)
             ->withHeader('AppName:' . $this->APP_NAME)
