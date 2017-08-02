@@ -1,8 +1,10 @@
 // angular
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Http } from '@angular/http';
 import { BackandService } from '@backand/angular2-sdk';
-import { AppService} from '../shared/app.service';
+import { AppService } from '../shared/app.service';
 import * as _ from 'lodash';
+import { RecaptchaComponent } from 'ng-recaptcha';
 
 
 export interface User {
@@ -12,17 +14,21 @@ export interface User {
 }
 
 @Component({
-  selector : 'signup',
+  selector: 'signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
+  @ViewChild(RecaptchaComponent) reCaptcha: RecaptchaComponent;
   public model: User;
   public error: any;
+  public captchaResponse: any;
+  private captcha_verify_site_url = 'https://www.google.com/recaptcha/api/siteverify';
 
   constructor(
     private backand: BackandService,
-    private appService : AppService
+    private appService: AppService,
+    private http: Http
   ) { }
 
   public ngOnInit() {
@@ -34,7 +40,7 @@ export class SignupComponent {
     };
   }
 
-  signup() {
+  private signup() {
     this.error = '';
     this.backand
       .signup(
@@ -51,8 +57,34 @@ export class SignupComponent {
         this.appService.redirect('/');
       },
       error => {
-        console.error(error);
         this.error = _.get(error, 'data.error_description');
       });
   }
+
+  resolved(captchaResponse: string) {
+    this.captchaResponse = captchaResponse;
+  }
+
+  validateCaptcha() {
+    this.verifyCaptcha()
+      .subscribe((result) => {
+        console.log('Verify Captcha Response', result);
+        if(result.status == '200'){
+          this.signup();
+        }
+      }, (error)=>{
+        this.error = "Unable to verify captcha. Please try again";
+        this.reCaptcha.reset();
+      });
+  }
+
+  private verifyCaptcha() {
+    return this.http
+      .post(this.captcha_verify_site_url, {
+        secret: '6LdOyykUAAAAACTuPM1CnAfQY5-ECWrn_0ojCAUO',
+        response: this.captchaResponse
+      })
+      .map((response) => response.json());
+  }
+
 }

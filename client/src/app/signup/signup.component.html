@@ -1,5 +1,5 @@
 <div class="page-signup center-box">
-  <form name="form" (ngSubmit)="f.form.valid && signup()" #f="ngForm" novalidate>
+  <form name="form" (ngSubmit)="f.form.valid && validateCaptcha()" #f="ngForm" novalidate>
     <div class="alert alert-danger" *ngIf="error">
       {{error}}
     </div>
@@ -20,6 +20,11 @@
       <label>Password <span>*</span></label>
       <small class="form-text text-muted">Use at least one lowercase letter, one numeral and seven characters.</small>
       <div *ngIf="f.submitted && !password.valid" class="form-control-feedback">Password is required</div>
+    </div>
+    <div class="md-form-group">
+      <div style="margin: 0 auto;width: 304px;">
+        <re-captcha [(ngModel)]="captchaResponse" name="captcha" required siteKey="6LdOyykUAAAAANxis4krcHI6b05T7tVMC6Elz8fH" (resolved)="resolved($event)"></re-captcha>
+      </div>
     </div>
     <div class="center-box-footer">
       <div>

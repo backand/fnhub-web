@@ -31,6 +31,8 @@ import { ENV_PROVIDERS } from './environment';
 
 //third party modules
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RecaptchaModule } from 'ng-recaptcha';
+import {RecaptchaFormsModule} from 'ng-recaptcha/forms'
 // App is our top level component
 import { AppComponent } from './app.component';
 import { SearchComponent } from './shared/search-field.component';
@@ -113,6 +115,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     SharedModule.forRoot(),
     NgbModule.forRoot(),
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
