@@ -35,7 +35,11 @@
                                     <i class="fa fa-code-fork fa-fw fa-2x" aria-hidden="true"></i>
                                 </div>
                                 <div class="list-body">
-                                    <span class="text-gray-lt">3.3.1</span>
+                                    <span class="text-gray-lt">
+                                        @if(isset($module['versions']) && count($module['versions']) > 0)
+                                            {{$module['versions'][0]['major']}}
+                                        @endif
+                                    </span>
                                 </div>
                             </li>
                             <li class="list-item">

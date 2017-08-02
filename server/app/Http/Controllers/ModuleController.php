@@ -40,7 +40,7 @@ class ModuleController extends Controller
         );
         $detail = 'No content found';
         $user = array('fullName'=>'');
-        $response = Curl::to($this->REST_URL . '/1/function/general/module?parameters={"name":"' . $module_name . '"}')
+        $response = Curl::to($this->REST_URL . '/1/function/general/module')
             ->withHeader('AnonymousToken: ' . $this->ANONYMOUS_TOKEN)
             ->withHeader('AppName:' . $this->APP_NAME)
             ->withData(array('parameters' => '{}', 'name'=> $module_name, 'path' => 'get'))
@@ -53,11 +53,8 @@ class ModuleController extends Controller
             ->post();
         if (isset($response->content) && !is_null($response->content) && $response->status == 200) {
             $server_output_json = json_decode(json_encode($response->content), true);
-            print_r($server_output_json);
-            die();
-
-            $module = $server_output_json['data'][0];
-            $user = $server_output_json['relatedObjects']['users'][$module['creator']];
+            $module = $server_output_json;
+            $user = $module['creator'];
 
             if (isset($module['keywords'])) {
                 $module['keywords'] = explode(',', $module['keywords']);
