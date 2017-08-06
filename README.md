@@ -36,8 +36,6 @@ cd fnhub-web
 php artisan serve
 
 ```
-php artisan serve
-
 
 ### Deployment on server
 ```bash
