@@ -85,6 +85,10 @@ const routes: Routes = [
     path: 'module/:action',
     children: []
   },
+   {
+    path: 'users/:action',
+    children: []
+  },
 ];
 
 /**
@@ -148,6 +152,7 @@ export class AppModule {
     'forgot_password': [ForgotPasswordComponent],
     'reset_password': [ResetPasswordComponent],
     'default': [HomeComponent],
+    'users' : []
   };
   constructor(
     public appRef: ApplicationRef,

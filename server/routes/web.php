@@ -22,4 +22,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/auth/signup', 'AuthController@signup');
     Route::get('/auth/reset-password', 'AuthController@resetPassword');
     Route::get('/auth/forgot-password','AuthController@forgotPassword');
+
+    Route::get('/users','UserController@show');
+    Route::get('/users/{user_name}','UserController@show');
 });
