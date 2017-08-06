@@ -23,7 +23,6 @@ export class SignupComponent {
   public model: User;
   public error: any;
   public captchaResponse: any;
-  private captcha_verify_site_url = 'https://www.google.com/recaptcha/api/siteverify';
 
   constructor(
     private backand: BackandService,
@@ -40,7 +39,7 @@ export class SignupComponent {
     };
   }
 
-  private signup() {
+  signup() {
     this.error = '';
     this.backand
       .signup(
@@ -50,7 +49,8 @@ export class SignupComponent {
       this.model.password,
       this.model.password,
       {
-        fullName: this.model.fullName
+        fullName: this.model.fullName,
+        code: this.captchaResponse
       }).then(
       data => {
         console.log(data);
@@ -63,28 +63,6 @@ export class SignupComponent {
 
   resolved(captchaResponse: string) {
     this.captchaResponse = captchaResponse;
-  }
-
-  validateCaptcha() {
-    this.verifyCaptcha()
-      .subscribe((result) => {
-        console.log('Verify Captcha Response', result);
-        if(result.status == '200'){
-          this.signup();
-        }
-      }, (error)=>{
-        this.error = "Unable to verify captcha. Please try again";
-        this.reCaptcha.reset();
-      });
-  }
-
-  private verifyCaptcha() {
-    return this.http
-      .post(this.captcha_verify_site_url, {
-        secret: '6LdOyykUAAAAACTuPM1CnAfQY5-ECWrn_0ojCAUO',
-        response: this.captchaResponse
-      })
-      .map((response) => response.json());
   }
 
 }
