@@ -95,3 +95,4 @@ client/.awcache
 server/public/assets/sass/
 www/server
 www/build
+www/
