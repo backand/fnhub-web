@@ -1,0 +1,31 @@
+* Hostname api.backand.com was found in DNS cache
+*   Trying 34.198.105.245...
+* TCP_NODELAY set
+* Connected to api.backand.com (34.198.105.245) port 443 (#0)
+* TLS 1.2 connection using TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+* Server certificate: *.backand.com
+* Server certificate: Amazon
+* Server certificate: Amazon Root CA 1
+* Server certificate: Starfield Services Root Certificate Authority - G2
+> POST /1/function/general/mdToHtml?parameters={"mdFileUri":"https://raw.githubusercontent.com/backand/angular2-sdk/master/README.md"} HTTP/1.1
+Host: api.backand.com
+Accept: */*
+AnonymousToken: f10673bb-d12a-4245-8eca-312add606059
+AppName:fnhub Application
+Content-Type: application/json
+Content-Length: 114
+
+* upload completely sent off: 114 out of 114 bytes
+< HTTP/1.1 200 OK
+< Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE
+< Access-Control-Expose-Headers: Backand-Action-Guid, Backand-Action-Stack
+< Cache-control: no-cache="set-cookie"
+< Content-Type: application/json; charset=utf-8
+< Date: Wed, 02 Aug 2017 12:41:50 GMT
+< Server: Microsoft-IIS/8.5
+< Set-Cookie: AWSELB=19BDB7D51EFF0C65570A004DECB0B50F3A82A3917CEE178BDA1CED2C544E9A6DA809C674751E8D8F25676AF68E2B63B822F88CBF725133BF5E4BD097D7CBC8C610ECC170E1;PATH=/
+< X-Powered-By: ASP.NET
+< Content-Length: 7578
+< Connection: keep-alive
+< 
+* Connection #0 to host api.backand.com left intact

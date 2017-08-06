@@ -6,8 +6,10 @@
         margin-bottom: 10px;
     }
     .list-container {
-      border-left: 1px solid #e4e4e4;
-      padding-left: 38px;
+        @media (min-width: 480px) {
+            border-left: 1px solid #e4e4e4;
+            padding-left: 38px;
+        }
         .list {
             &.package-list {
                 .list-item {
@@ -19,6 +21,18 @@
                     }
                 }
             }
+        }
+    }
+    .btn-wrapper {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .btn-filter {
+            border-radius: 0;
+            border: 0;
+            background: #28292b;
+            cursor: pointer;
         }
     }
 }

@@ -1,11 +1,13 @@
 import {
-LocationStrategy,
-PathLocationStrategy,
-Location
+  LocationStrategy,
+  PathLocationStrategy,
+  Location
 } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Router, ActivatedRoute } from '@angular/router';
+import * as _ from 'lodash';
 
 import {
   NgModule,
@@ -18,6 +20,7 @@ import {
 } from '@angularclass/hmr';
 import {
   RouterModule,
+  Routes,
   PreloadAllModules,
 } from '@angular/router';
 
@@ -25,18 +28,37 @@ import {
  * Platform and Environment providers/directives/pipes
  */
 import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
+
+//third party modules
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RecaptchaModule } from 'ng-recaptcha';
+import {RecaptchaFormsModule} from 'ng-recaptcha/forms'
 // App is our top level component
 import { AppComponent } from './app.component';
+import { SearchComponent } from './shared/search-field.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
-import { AboutComponent } from './about';
-import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
+import {
+  HeaderComponent,
+  TopMenuComponent,
+  TopRightMenuComponent
+} from './header';
+import {
+  HeaderMenuSidebarComponent,
+  FiltersSidebarComponent
+} from './modal-sidebars';
+import {
+  LanguageFilterComponent
+} from './filters';
+import { SignInComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 import { SharedModule } from './shared/shared.module';
+import { AppService } from './shared/app.service';
 import { BackandService } from '@backand/angular2-sdk';
 
 import '../styles/styles.scss';
@@ -53,17 +75,35 @@ type StoreType = {
   disposeOldHosts: () => void
 };
 
+// Route config let's you map routes to components
+const routes: Routes = [
+  {
+    path: 'auth/:action',
+    children: []
+  },
+  {
+    path: 'module/:action',
+    children: []
+  },
+];
+
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    AboutComponent,
     HomeComponent,
-    NoContentComponent,
-    XLargeDirective
+    HeaderComponent,
+    HeaderMenuSidebarComponent,
+    FiltersSidebarComponent,
+    TopMenuComponent,
+    TopRightMenuComponent,
+    SignInComponent,
+    SignupComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    LanguageFilterComponent
   ],
   /**
    * Import Angular's modules.
@@ -72,8 +112,11 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
-    SharedModule.forRoot()
+    RouterModule.forRoot(routes),
+    SharedModule.forRoot(),
+    NgbModule.forRoot(),
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
@@ -82,15 +125,39 @@ type StoreType = {
     ENV_PROVIDERS,
     APP_PROVIDERS,
     BackandService,
-    [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
+    AppService,
+    NgbActiveModal
+  ],
+  entryComponents: [
+    AppComponent,
+    HomeComponent,
+    HeaderComponent,
+    SignInComponent,
+    SignupComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    HeaderMenuSidebarComponent,
+    FiltersSidebarComponent
   ]
 })
 export class AppModule {
-
+  private componentsMap: any = {
+    'module': [],
+    'signin': [SignInComponent],
+    'signup': [SignupComponent],
+    'forgot_password': [ForgotPasswordComponent],
+    'reset_password': [ResetPasswordComponent],
+    'default': [HomeComponent],
+  };
   constructor(
     public appRef: ApplicationRef,
-    public appState: AppState
-  ) {}
+    public appState: AppState,
+    private backand: BackandService,
+    private appService: AppService,
+    private router: Router
+  ) {
+
+  }
 
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {
@@ -128,7 +195,7 @@ export class AppModule {
     /**
      * Save input values
      */
-    store.restoreInputValues  = createInputTransfer();
+    store.restoreInputValues = createInputTransfer();
     /**
      * Remove styles
      */
@@ -141,6 +208,19 @@ export class AppModule {
      */
     store.disposeOldHosts();
     delete store.disposeOldHosts;
+  }
+
+  ngDoBootstrap(appRef: ApplicationRef) {
+    const bootCmps = document.querySelectorAll('[data-comp-id]');
+    appRef.bootstrap(HeaderComponent);
+    for (const i in bootCmps) {
+      if (bootCmps.hasOwnProperty(i)) {
+        let cmp = bootCmps[i].getAttribute('data-comp-id');
+        _.forEach(this.componentsMap[cmp], (r) => {
+          appRef.bootstrap(r);
+        })
+      }
+    }
   }
 
 }

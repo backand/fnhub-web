@@ -7,7 +7,7 @@
   <title>funhub - Publish and Consume lambda functions</title>
   <meta name="description" content="funhub - Publish and Consume lambda functions">
   <!-- base url -->
-  <base href="/">
+    <base href="/">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <!-- Configured Head Tags  -->
@@ -50,70 +50,15 @@
 <body>
   <div class="app">
   <div class="app-content">
-    <header class="app-header single-layout">
-      <!---->
-
-      <!----><div class="container-fluid">
-        <div class="row">
-          <div class="col col-lg-2 col-sm-2 logo-wrapper">
-            <div class="logo">
-              <a class="fnHub" routerlink="/" href="#/">
-              <img class="hidden-xs-down" src="/assets/img/logo.png">
-              <img class="hidden-sm-up" src="/assets/img/logo_mobile.png">
-              </a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="nav-wrapper">
-              <div class="row hidden-xs-down">
-                <div class="col">
-                  <div class="row justify-content-md-center">                
-                    <div class="col-12 col-md-auto">
-                      <nav class="nav main-nav">
-                        <a class="nav-link" href="#">features</a>
-                        <a class="nav-link" href="#">documentation</a>
-                        <a class="nav-link" href="#">support</a>
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-                <div class="col col-lg-3">
-                  <ul class="nav pull-right right-nav">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#">singup</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">login</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="row search-wrapper">
-                <div class="col">
-                  <form style="display:flex; width:100%" method="GET" action = "/">
-                  <div class="input-group search-input">
-  <input class="form-control" placeholder="find packages" name="q" type="text">
-  <span class="input-group-btn">
-                      <i class="fa fa-search"></i>
-                  </span>
-</div>
-</form>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-
-      
-    </header>
+    <app-header></app-header>
     <div class="app-body">
        @yield('content')
     </div>
     <div class="app-footer"></div>
   </div>
 </div>
+  <!-- Scripts will be injected by webpack here -->
+<script type="text/javascript" src="polyfills.bundle.js"></script>
+<script type="text/javascript" src="main.bundle.js" async></script>
 </body>
 </html>

@@ -9,7 +9,8 @@ import {
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 import { AppState } from './app.service';
-import { BackandService } from '@backand/angular2-sdk';
+import { HeaderComponent } from './header';
+import { HeaderMenuComponent } from './header-menu';
 
 /**
  * App Component
@@ -30,11 +31,10 @@ export class AppComponent implements OnInit {
 
   constructor(
     public appState: AppState,
-    private backand: BackandService,
-     private router: Router,
+    private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
-      this.router.events
+    this.router.events
       .filter((event) => event instanceof NavigationEnd)
       .map(() => this.activatedRoute)
       .map((route) => {
@@ -50,18 +50,6 @@ export class AppComponent implements OnInit {
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
-    this.backand.init({
-      appName: 'funhub',
-      anonymousToken: 'f10673bb-d12a-4245-8eca-312add606059',
-    });
   }
 
 }
-
-/**
- * Please review the https://github.com/AngularClass/angular2-examples/ repo for
- * more angular app examples that you may copy/paste
- * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
- * For help or questions please contact us at @AngularClass on twitter
- * or our chat on Slack at https://AngularClass.com/slack-join
- */

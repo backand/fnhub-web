@@ -80,6 +80,16 @@ example :
 http:www.fnhub.io ----> /
 ```
 
+#Heroku Deployment (Mannual)
+```
+git init (First time)
+heroku git:remote -a fnhubqa (First time)
+
+git add .
+git commit -am "make it better"
+git push heroku master
+git push heroku -u master or git push heroku master ```
+
 # Best Practices
 The following are some things that will make AoT compile fail.
 
@@ -153,6 +163,9 @@ If you're importing a module that uses Node.js modules which are CommonJS you ne
 import * as _ from 'lodash';
 ```
 ___
+
+//"chmod -R 777 /bootstrap",
+      //"chown -R www-data:www-data /bootstrap"
 
 # License
  [MIT](/LICENSE)

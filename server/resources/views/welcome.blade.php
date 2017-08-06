@@ -36,15 +36,6 @@
 
   
 
-  <!-- Async Google Analytics: change UA-71073175-1 to be your site's ID -->
-  <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-71073175-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <script async src="https://www.google-analytics.com/analytics.js"></script>
-  <!-- End Google Analytics -->
-
   <!-- CSS will be injected by webpack here -->
   <!-- Preload link tags will be injected by webpack here -->
 
@@ -52,9 +43,15 @@
 
 <body>
 
-  <app>
-    Loading...
-  </app>
+  <div class="app">
+  <div class="app-content">
+    <app-header data-comp-id=""></app-header>
+    <div class="app-body">
+      <home></home>
+    </div>
+    <div class="app-footer"></div>
+  </div>
+</div>
 
   <!-- Scripts will be injected by webpack here -->
 <script type="text/javascript" src="main.bundle.js" async></script><script type="text/javascript" src="polyfills.bundle.js"></script></body>
