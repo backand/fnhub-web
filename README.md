@@ -1,7 +1,6 @@
 # fnhub
 Publish and consume lambda functions.
 
-
 ## Dependencies or Prerequisites
 What you need to run this app:
 * composer (https://getcomposer.org/doc/00-intro.md)
@@ -78,17 +77,19 @@ example :
 http:www.fnhub.io ----> /
 ```
 
-#Heroku Deployment (Mannual)
+### Heroku Deployment (Mannual)
 ```
+cd www
 git init (First time)
 heroku git:remote -a fnhubqa (First time)
 
 git add .
-git commit -am "make it better"
+git commit -m "make it better"
 git push heroku master
-git push heroku -u master or git push heroku master ```
 
-# Best Practices
+```
+
+## Best Practices
 The following are some things that will make AoT compile fail.
 
 - Don’t use require statements for your templates or styles, use styleUrls and templateUrls, the angular2-template-loader plugin will change it to require at build time.
@@ -98,7 +99,7 @@ The following are some things that will make AoT compile fail.
 - Don’t use functions in your providers, routes or declarations, export a function and then reference that function name
 - @Inputs, @Outputs, View or Content Child(ren), Hostbindings, and any field you use from the template or annotate for Angular should be public
 
-# External Stylesheets
+## External Stylesheets
 Any stylesheets (Sass or CSS) placed in the `src/styles` directory and imported into your project will automatically be compiled into an external `.css` and embedded in your production builds.
 
 For example to use Bootstrap as an external stylesheet:
@@ -114,7 +115,7 @@ TypeScript 2.1.x includes everything you need. Make sure to upgrade, even if you
 npm install --global typescript
 ```
 
-# Types
+## Types
 > When you include a module that doesn't include Type Definitions inside of the module you can include external Type Definitions with @types
 
 i.e, to have youtube api support, run this command in terminal: 
@@ -128,7 +129,7 @@ import '@types/gapi';
 import '@types/youtube';
 ```
 
-## Custom Type Definitions
+### Custom Type Definitions
 When including 3rd party modules you also need to include the type definition for the module
 if they don't provide one within the module. You can try to install it with @types
 
@@ -165,5 +166,3 @@ ___
 //"chmod -R 777 /bootstrap",
       //"chown -R www-data:www-data /bootstrap"
 
-# License
- [MIT](/LICENSE)

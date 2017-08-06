@@ -20,6 +20,7 @@ if [ "$FNHUB_ENV" == "prod" ]; then
     cp -a $dir/www/.git/* $dir/tmp/.git/
     rm -rf $dir/www/*
     # update project/ to your directory name
+    mkdir $dir/www
     printf "Creating bundle\n"
     cp -a $dir/server/public/* www/
     rm -rf $dir/www/index.php
