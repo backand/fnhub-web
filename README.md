@@ -86,7 +86,7 @@ heroku buildpacks:set heroku/php (First time)
 
 git add .
 git commit -m "make it better"
-git push heroku master
+git push -f heroku master
 
 ```
 
