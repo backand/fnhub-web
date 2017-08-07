@@ -22,8 +22,10 @@ if [ "$FNHUB_ENV" == "prod" ]; then
     mkdir $dir/www
     printf "Creating bundle\n"
     cp -a $dir/server/public/* www/
+    cp  $dir/server/public/.* www/
     rm -rf $dir/www/index.php
     cp $dir/server/resources/index.template $dir/www/index.php
+    rm -rf $dir/www/index.html
     cp -a $dir/tmp/.git/* $dir/www/.git/
     rm -rf $dir/tmp
     printf "Moving laravel application to /www\n"
