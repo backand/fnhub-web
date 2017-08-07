@@ -10,25 +10,37 @@
       <div *ngIf="f.submitted && !fullName.valid" class="form-control-feedback">Full Name is required</div>
     </div>
     <div class="md-form-group float-label" [ngClass]="{ 'has-danger': f.submitted && !email.valid }">
-      <input type="email" class="md-input" name="email" [(ngModel)]="model.email" #email="ngModel" required>
+      <input type="email" class="md-input" name="email" [(ngModel)]="model.email" #email="ngModel" required pattern="([a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)">
       <label>Email Address <span>*</span></label>
       <small class="form-text text-muted">You occasionally receive account related emails. We promise not to share your email with anyone.</small>
-      <div *ngIf="f.submitted && !email.valid" class="form-control-feedback">Email is required</div>
+      <div *ngIf="f.submitted && email.errors">
+        <div *ngIf="email.errors.required" class="form-control-feedback">Email is required</div>
+        <div *ngIf="email.errors.pattern" class="form-control-feedback">Email enter valid email</div>
+      </div>
+
     </div>
     <div class="md-form-group float-label" [ngClass]="{ 'has-danger': f.submitted && !password.valid }">
-      <input type="password" class="md-input" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+      <input type="password" class="md-input" name="password" [(ngModel)]="model.password" #password="ngModel" required pattern="^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,20}$"
+      />
       <label>Password <span>*</span></label>
       <small class="form-text text-muted">Use at least one lowercase letter, one numeral and seven characters.</small>
-      <div *ngIf="f.submitted && !password.valid" class="form-control-feedback">Password is required</div>
+      <div *ngIf="f.submitted && password.errors">
+        <div *ngIf="password.errors.required" class="form-control-feedback">Password is required</div>
+        <div *ngIf="password.errors.pattern" class="form-control-feedback">Please enter valid password</div>
+      </div>
     </div>
     <div class="md-form-group">
       <div style="margin: 0 auto;width: 304px;">
-        <re-captcha [(ngModel)]="captchaResponse" name="captcha" required siteKey="6LdOyykUAAAAANxis4krcHI6b05T7tVMC6Elz8fH" (resolved)="resolved($event)"></re-captcha>
+        <re-captcha [(ngModel)]="captchaResponse" #captcha="ngModel" name="captcha" required siteKey="6LdOyykUAAAAANxis4krcHI6b05T7tVMC6Elz8fH"
+          (resolved)="resolved($event)"></re-captcha>
+        <div *ngIf="f.submitted && captcha.errors">
+          <div *ngIf="captcha.errors.required" class="form-control-feedback text-danger">Please select captcha.</div>
+        </div>
       </div>
     </div>
     <div class="center-box-footer">
       <div>
-        <button type="submit" class="btn primary btn-block btn-lg text-uppercase btn-signin" [disabled]="!f.valid">sign up</button>
+        <button type="submit" class="btn primary btn-block btn-lg text-uppercase btn-signin">sign up</button>
       </div>
       <div class="my-3 text-center">
         <a href="/auth/signin" title="Or sign up">Or sign in</a>

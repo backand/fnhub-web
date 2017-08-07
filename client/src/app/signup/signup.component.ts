@@ -38,7 +38,11 @@ export class SignupComponent {
       password: ''
     };
   }
-
+  /**
+   * @name signup
+   * @description Create new user 
+   * @memberof SignupComponent
+   */
   signup() {
     this.error = '';
     this.backand
@@ -56,11 +60,21 @@ export class SignupComponent {
         console.log(data);
         this.appService.redirect('/');
       },
-      error => {
-        this.error = _.get(error, 'data.error_description');
+      (error:any) => {
+        this.reCaptcha.reset();
+        let er:any = _.get(error, 'data.error_description') || '';
+        if(_.toLower('Membership failure:InvalidPassword') === _.toLower(er)){
+          er = 'Password is not valid';
+        }
+        this.error = er;
       });
   }
-
+  /**
+   * @name resolved
+   * @description Helper function which is called when captcha response is changed.
+   * @param {string} captchaResponse 
+   * @memberof SignupComponent
+   */
   resolved(captchaResponse: string) {
     this.captchaResponse = captchaResponse;
   }

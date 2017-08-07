@@ -113,9 +113,14 @@ class ModuleController extends Controller
                 'key' => 'python'
             ),
             array(
-                'id' => 3,
+                'id' => 4,
                 'name' => 'Java',
                 'key' => 'java'
+            ),
+            array(
+                'id' => 5,
+                'name' => 'Node',
+                'key' => 'node'
             )
         );
 

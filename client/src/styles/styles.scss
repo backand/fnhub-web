@@ -41,9 +41,14 @@ textarea {
 }
 
 .btn {
+    cursor: pointer;
     &.btn-lg {
         @include border-radius(25px);
     }
+    &.disabled,
+    &:disabled{
+      cursor: not-allowed;
+    }   
 }
 
 .search-input {
