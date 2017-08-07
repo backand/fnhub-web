@@ -82,6 +82,7 @@ http:www.fnhub.io ----> /
 cd www
 git init (First time)
 heroku git:remote -a fnhubqa (First time)
+heroku buildpacks:set heroku/php (First time)
 
 git add .
 git commit -m "make it better"
