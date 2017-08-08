@@ -3,7 +3,6 @@
 @section('content')
     <div class="container page-module-detail">
         <div class="row">
-
             <div class="col-md-9">
                 <div class="page-content">
                     <div class="d-flex mb-3">
@@ -11,7 +10,7 @@
                             <img class="w-64 circle img-thumbnail" src="/assets/img/avatar/avatar.png"
                                  alt="Generic placeholder image">
                         </div>
-                        <div class="align-self-center p-2 pl-3"><h2 class="mt-0 mb-0">Itay Last Name</h2></div>
+                        <div class="align-self-center p-2 pl-3"><h2 class="mt-0 mb-0">{{$user['fullName']}}</h2></div>
                     </div>
 
                     <p class="text-gray-lt"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -26,39 +25,24 @@
                     <h4 class="mt-lg-5">Projects</h4>
                     <div class="list-container">
                         <ul class="list package-list">
-
-                            <li class="list-item px-0">
-                                <div class="list-body">
-                                    <h5><a routerLink="/module/1" class="_600">template-mailer-aws-lambda</a></h5>
-                                    <div><span class="text-gray-lt small">by: </span><a href="">coderbyheart</a></div>
-                                    <p class="text-gray-lt">A transactional email mailer that runs on AWS lambda and
-                                        sends emails via SES</p>
-                                    <div class="text-gray-lt"><i class="fa fa-code-fork fa-fw"
-                                                                 aria-hidden="true"></i><span>3.3.1</span></div>
-                                </div>
-                            </li>
-
-                            <li class="list-item px-0">
-                                <div class="list-body">
-                                    <h5><a routerLink="/module/1" class="_600">template-mailer-aws-lambda</a></h5>
-                                    <div><span class="text-gray-lt small">by: </span><a href="">coderbyheart</a></div>
-                                    <p class="text-gray-lt">A transactional email mailer that runs on AWS lambda and
-                                        sends emails via SES</p>
-                                    <div class="text-gray-lt"><i class="fa fa-code-fork fa-fw"
-                                                                 aria-hidden="true"></i><span>3.3.1</span></div>
-                                </div>
-                            </li>
-
-                            <li class="list-item px-0">
-                                <div class="list-body">
-                                    <h5><a routerLink="/module/1" class="_600">template-mailer-aws-lambda</a></h5>
-                                    <div><span class="text-gray-lt small">by: </span><a href="">coderbyheart</a></div>
-                                    <p class="text-gray-lt">A transactional email mailer that runs on AWS lambda and
-                                        sends emails via SES</p>
-                                    <div class="text-gray-lt"><i class="fa fa-code-fork fa-fw"
-                                                                 aria-hidden="true"></i><span>3.3.1</span></div>
-                                </div>
-                            </li>
+                            @if( isset($user['modules']) && is_array($user['modules']))
+                                @foreach ($user['modules'] as $module)
+                                    <li class="list-item px-0">
+                                        <div class="list-body">
+                                            <h5><a href="/module/{{$module['name']}}" class="_600 text-black">{{$module['name']}}</a></h5>
+                                            <div><span class="text-gray-lt small">by: </span><a href="">{{$user['fullName']}}</a></div>
+                                            <p class="text-gray-lt">{{$module['description']}}</p>
+                                            <div class="text-gray-lt"><i class="fa fa-code-fork fa-fw" aria-hidden="true"></i><span>{{$module['latestVersion']}}</span></div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @else
+                                <li class="list-item px-0">
+                                    <div class="list-body">
+                                        No project
+                                    </div>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
