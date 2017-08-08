@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AppState } from '../app.service';
 import * as _ from 'lodash';
 import { BackandService } from '@backand/angular2-sdk';
 
+import { AppState } from '../app.service';
+import { AuthService } from '../shared';
 import { HeaderMenuSidebarComponent } from '../modal-sidebars/header-menu-sidebar.component';
 
 @Component({
@@ -15,7 +16,8 @@ export class HeaderComponent {
   constructor(
     public appState: AppState,
     private backand: BackandService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private auth : AuthService
   ) {
     const route = window.location.pathname;
     this.appState.set('layout', _.startsWith(route, '/auth') ? 'center' : '');
@@ -26,13 +28,6 @@ export class HeaderComponent {
    */
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
-    this.backand.user.getUserDetails(true)
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
   }
   /**
    * @description 
@@ -44,5 +39,4 @@ export class HeaderComponent {
       container: '.app-header'
     });
   }
-
 }

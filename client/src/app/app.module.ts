@@ -58,7 +58,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 
 
 import { SharedModule } from './shared/shared.module';
-import { AppService } from './shared/app.service';
+import { AppService, AuthService } from './shared';
 import { BackandService } from '@backand/angular2-sdk';
 
 import '../styles/styles.scss';
@@ -120,7 +120,7 @@ const routes: Routes = [
     SharedModule.forRoot(),
     NgbModule.forRoot(),
     RecaptchaModule.forRoot(),
-    RecaptchaFormsModule
+    RecaptchaFormsModule,
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
@@ -130,6 +130,7 @@ const routes: Routes = [
     APP_PROVIDERS,
     BackandService,
     AppService,
+    AuthService,
     NgbActiveModal
   ],
   entryComponents: [
@@ -159,9 +160,10 @@ export class AppModule {
     public appState: AppState,
     private backand: BackandService,
     private appService: AppService,
-    private router: Router
+    private router: Router,
+    private authService : AuthService
   ) {
-
+    this.authService.setUser();
   }
 
   public hmrOnInit(store: StoreType) {
