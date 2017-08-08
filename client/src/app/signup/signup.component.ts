@@ -65,6 +65,8 @@ export class SignupComponent {
         let er:any = _.get(error, 'data.error_description') || '';
         if(_.toLower('Membership failure:InvalidPassword') === _.toLower(er)){
           er = 'Password is not valid';
+        }else if(error.status == 417 && _.isString(error.data) && error.data.lastIndexOf('users_username_unique') >=0){
+          er = 'Username '+this.model.username + ' is already signed up to this app';
         }
         this.error = er;
       });
