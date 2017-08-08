@@ -25,7 +25,7 @@
                     <h4 class="mt-lg-5">Projects</h4>
                     <div class="list-container">
                         <ul class="list package-list">
-                            @if( isset($user['modules']) && is_array($user['modules']))
+                            @if( isset($user['modules']) && is_array($user['modules']) && count($user['modules']) > 0)
                                 @foreach ($user['modules'] as $module)
                                     <li class="list-item px-0">
                                         <div class="list-body">

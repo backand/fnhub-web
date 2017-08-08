@@ -90,6 +90,7 @@ export class AuthService {
    * @memberOf AuthService
    */
   public getUser(user: any): void {
+    return this.user;
   }
 
 

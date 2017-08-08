@@ -110,12 +110,20 @@ class Backand
             "fullName" => "",
             "modules" => []
         );
+        $request_data = array(
+            'parameters' => '{}',
+            'path' => 'getUser');
+        if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
+            $request_data['email'] = $username;
+        } else {
+            $request_data['username'] = $username;
+        }
+
         try {
             $response = Curl::to($this->REST_URL . '/1/function/general/module')
                 ->withHeader('AnonymousToken: ' . $this->ANONYMOUS_TOKEN)
                 ->withHeader('AppName:' . $this->APP_NAME)
-                ->withData(array('username' => $username))
-                ->withData(array('parameters' => '{}', 'username'=> $username, 'path' => 'getUser'))
+                ->withData($request_data)
                 ->withOption('RETURNTRANSFER', '1')
                 ->asJson()
                 ->returnResponseObject()
