@@ -3,11 +3,11 @@
     <div class="alert alert-danger" *ngIf="error">
       {{error}}
     </div>
-    <div class="md-form-group float-label" [ngClass]="{ 'has-danger': f.submitted && !fullName.valid }">
-      <input type="text" class="md-input" name="fullName" [(ngModel)]="model.fullName" #fullName="ngModel" required>
-      <label>Full Name <span>*</span></label>
+    <div class="md-form-group float-label" [ngClass]="{ 'has-danger': f.submitted && !username.valid }">
+      <input type="text" class="md-input" name="username" [(ngModel)]="model.username" #username="ngModel" required>
+      <label>Username <span>*</span></label>
       <small class="form-text text-muted">This will be your username - you can enter your organization's username next.</small>
-      <div *ngIf="f.submitted && !fullName.valid" class="form-control-feedback">Full Name is required</div>
+      <div *ngIf="f.submitted && !username.valid" class="form-control-feedback">Username is required</div>
     </div>
     <div class="md-form-group float-label" [ngClass]="{ 'has-danger': f.submitted && !email.valid }">
       <input type="email" class="md-input" name="email" [(ngModel)]="model.email" #email="ngModel" required pattern="([a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)">
@@ -15,7 +15,7 @@
       <small class="form-text text-muted">You occasionally receive account related emails. We promise not to share your email with anyone.</small>
       <div *ngIf="f.submitted && email.errors">
         <div *ngIf="email.errors.required" class="form-control-feedback">Email is required</div>
-        <div *ngIf="email.errors.pattern" class="form-control-feedback">Email enter valid email</div>
+        <div *ngIf="email.errors.pattern" class="form-control-feedback">Please enter valid email</div>
       </div>
 
     </div>

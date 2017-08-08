@@ -8,7 +8,7 @@ import { RecaptchaComponent } from 'ng-recaptcha';
 
 
 export interface User {
-  fullName: string;
+  username: string;
   email: string;
   password: string;
 }
@@ -33,7 +33,7 @@ export class SignupComponent {
   public ngOnInit() {
     this.error = '';
     this.model = {
-      fullName: '',
+      username: '',
       email: '',
       password: ''
     };
@@ -47,13 +47,13 @@ export class SignupComponent {
     this.error = '';
     this.backand
       .signup(
-      this.model.fullName,
+      this.model.username,
       'last',
       this.model.email,
       this.model.password,
       this.model.password,
       {
-        fullName: this.model.fullName,
+        username: this.model.username,
         code: this.captchaResponse
       }).then(
       data => {
