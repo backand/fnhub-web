@@ -1,4 +1,4 @@
-* Hostname in DNS cache was stale, zapped
+* Hostname api.backand.com was found in DNS cache
 *   Trying 34.197.8.216...
 * TCP_NODELAY set
 * Connected to api.backand.com (34.197.8.216) port 443 (#0)
@@ -21,7 +21,7 @@ Content-Length: 69
 < Access-Control-Expose-Headers: Backand-Action-Guid, Backand-Action-Stack
 < Cache-control: no-cache="set-cookie"
 < Content-Type: application/json; charset=utf-8
-< Date: Tue, 08 Aug 2017 18:21:12 GMT
+< Date: Tue, 08 Aug 2017 18:23:05 GMT
 < Server: Microsoft-IIS/8.5
 < Set-Cookie: AWSELB=19BDB7D51EFF0C65570A004DECB0B50F3A82A3917CE4F6640F759C08E081056424D1A435241E8D8F25676AF68E2B63B822F88CBF725133BF5E4BD097D7CBC8C610ECC170E1;PATH=/
 < X-Powered-By: ASP.NET

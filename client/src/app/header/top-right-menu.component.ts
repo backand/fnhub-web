@@ -11,7 +11,7 @@ import { AuthService } from '../shared';
     <a class="nav-link" href="/auth/signin">login</a>
   </li>
   <li class="nav-item" *ngIf="auth.isAuthorized()">
-    <a class="nav-link" href="/users/{{auth.user.username}}">{{auth.user.fullName}}</a>
+    <a class="nav-link" href="/users/{{auth.user.username}}">{{auth.user.username}}</a>
   </li>
   <li class="nav-item" *ngIf="auth.isAuthorized()">
     <a class="nav-link" href="" (click) = "logout($event)" >logout</a>
