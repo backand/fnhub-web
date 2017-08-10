@@ -32,7 +32,9 @@ import { ENV_PROVIDERS } from './environment';
 //third party modules
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecaptchaModule } from 'ng-recaptcha';
-import {RecaptchaFormsModule} from 'ng-recaptcha/forms'
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms'
+import {NgxPaginationModule} from 'ngx-pagination';
+
 // App is our top level component
 import { AppComponent } from './app.component';
 import { SearchComponent } from './shared/search-field.component';
@@ -85,7 +87,7 @@ const routes: Routes = [
     path: 'module/:action',
     children: []
   },
-   {
+  {
     path: 'users/:action',
     children: []
   },
@@ -121,6 +123,7 @@ const routes: Routes = [
     NgbModule.forRoot(),
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule,
+    NgxPaginationModule
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
@@ -153,7 +156,7 @@ export class AppModule {
     'forgot_password': [ForgotPasswordComponent],
     'reset_password': [ResetPasswordComponent],
     'default': [HomeComponent],
-    'users' : []
+    'users': []
   };
   constructor(
     public appRef: ApplicationRef,
@@ -161,7 +164,7 @@ export class AppModule {
     private backand: BackandService,
     private appService: AppService,
     private router: Router,
-    private authService : AuthService
+    private authService: AuthService
   ) {
     this.authService.setUser();
   }

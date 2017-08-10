@@ -1,11 +1,13 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BackandService } from '@backand/angular2-sdk';
 import * as _ from 'lodash';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PaginationInstance } from 'ngx-pagination';
 
 import { AppState } from '../app.service';
 import { Title } from './title';
@@ -33,7 +35,8 @@ import { AppService } from '../shared/app.service';
   /**
    * Every Angular template is first compiled by the browser before Angular runs it's compiler.
    */
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class HomeComponent implements OnInit {
   searchQuery: string;
@@ -41,7 +44,11 @@ export class HomeComponent implements OnInit {
   modules: any = [];
   selected_languages: string;
   filter: any;
-
+  public pager: PaginationInstance = {
+    itemsPerPage: 10,
+    currentPage: 1,
+    totalItems: 0
+  };
 
   constructor(
     private router: Router,
@@ -61,7 +68,7 @@ export class HomeComponent implements OnInit {
       });
 
     this.filter = this.appService.filterEmmiter$.subscribe(filter => {
-     console.warn('selected_languages', filter);
+      console.warn('selected_languages', filter);
       this.selected_languages = filter;
       let lng = _.isArray(filter) ? filter.join(',') : (_.isString(filter) ? filter : '');
       this.router.navigate(['/'], { queryParams: { l: lng, q: this.searchQuery } });
@@ -70,17 +77,19 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-   // if (!!this.filter) this.filter.unsubscribe();
+    // if (!!this.filter) this.filter.unsubscribe();
   }
 
   searchModules(): void {
-    console.info(this.selected_languages);
     this.backand.fn.post("keywordsSearch", {
       "q": this.searchQuery,
-      "languages":  this.selected_languages
+      "languages": this.selected_languages,
+      "pageSize": this.pager.itemsPerPage,
+      "pageNumber": this.pager.currentPage
     }).then((res: any) => {
       this.modules = _.get(res, 'data');
-    })
+      this.pager.totalItems = 100;
+    });
   }
 
   open() {
@@ -88,5 +97,9 @@ export class HomeComponent implements OnInit {
       windowClass: 'left white',
       container: '.page-home'
     });
+  }
+
+  onPageChange(number: number) {
+    this.pager.currentPage = number;
   }
 }
