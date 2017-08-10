@@ -14,6 +14,7 @@ import { Title } from './title';
 import { FiltersSidebarComponent } from '../modal-sidebars/filters-sidebar.component';
 
 import { AppService } from '../shared/app.service';
+import { Constants } from '../app.constants';
 
 @Component({
   /**
@@ -44,10 +45,11 @@ export class HomeComponent implements OnInit {
   modules: any = [];
   selected_languages: string;
   filter: any;
+  isLoading: boolean;
   public pager: PaginationInstance = {
-    itemsPerPage: 10,
+    itemsPerPage: Constants.RECORD_PER_PAGE,
     currentPage: 1,
-    totalItems: 0
+    totalItems: Constants.RECORD_PER_PAGE
   };
 
   constructor(
@@ -59,11 +61,13 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.routeEvent = this.route
       .queryParams
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
         this.searchQuery = params['q'] || '';
+        this.pager.totalItems = Constants.RECORD_PER_PAGE;
         this.searchModules();
       });
 
@@ -81,15 +85,20 @@ export class HomeComponent implements OnInit {
   }
 
   searchModules(): void {
+    this.isLoading = true;
     this.backand.fn.post("keywordsSearch", {
       "q": this.searchQuery,
       "languages": this.selected_languages,
       "pageSize": this.pager.itemsPerPage,
       "pageNumber": this.pager.currentPage
     }).then((res: any) => {
-      this.modules = _.get(res, 'data');
-      this.pager.totalItems = 100;
-    });
+      this.modules = _.get(res, 'data') || [];
+      this.pager.totalItems = this.pager.totalItems;
+      if (this.modules.length >= this.pager.itemsPerPage) {
+        this.pager.totalItems = this.pager.totalItems + 20;
+      }
+      this.isLoading = false;
+    }, err => this.isLoading = false);
   }
 
   open() {
@@ -100,6 +109,9 @@ export class HomeComponent implements OnInit {
   }
 
   onPageChange(number: number) {
+    if (this.pager.currentPage < number) {
+      this.pager.totalItems = this.pager.totalItems - 20;
+    }
     this.pager.currentPage = number;
     this.searchModules();
   }

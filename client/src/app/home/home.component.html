@@ -44,9 +44,9 @@
           </div>
         </li -->
         </ul>
-        <p>No record found</p>
+        <p *ngIf="modules.length === 0 && !isLoading">No record found</p>
         <div class="d-flex justify-content-center">
-          <pagination-template #p="paginationApi" (pageChange)="onPageChange($event)" *ngIf="pager.totalItems">
+          <pagination-template #p="paginationApi" (pageChange)="onPageChange($event)" *ngIf="!isLoading">
             <nav>
               <ul class="pagination pagination-lg">
                 <li class="page-item" [class.disabled]="p.isFirstPage()">
