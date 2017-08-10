@@ -101,5 +101,6 @@ export class HomeComponent implements OnInit {
 
   onPageChange(number: number) {
     this.pager.currentPage = number;
+    this.searchModules();
   }
 }
