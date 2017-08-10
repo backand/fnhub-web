@@ -67,8 +67,7 @@ export class HomeComponent implements OnInit {
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
         this.searchQuery = params['q'] || '';
-        this.pager.totalItems = Constants.RECORD_PER_PAGE;
-        this.searchModules();
+        this.searchModules(1);
       });
 
     this.filter = this.appService.filterEmmiter$.subscribe(filter => {
@@ -84,20 +83,27 @@ export class HomeComponent implements OnInit {
     // if (!!this.filter) this.filter.unsubscribe();
   }
 
-  searchModules(): void {
+  searchModules(page: number): void {
     this.isLoading = true;
     this.backand.fn.post("keywordsSearch", {
       "q": this.searchQuery,
       "languages": this.selected_languages,
       "pageSize": this.pager.itemsPerPage,
-      "pageNumber": this.pager.currentPage
+      "pageNumber": page
     }).then((res: any) => {
       this.modules = _.get(res, 'data') || [];
       this.pager.totalItems = this.pager.totalItems;
-      if (this.modules.length >= this.pager.itemsPerPage) {
+      if (this.modules.length >= this.pager.itemsPerPage && page >= this.pager.currentPage) {
         this.pager.totalItems = this.pager.totalItems + 20;
+        console.log('Increament page counter');
+      }
+      if (page < this.pager.currentPage && page > 1) {
+        this.pager.totalItems = this.pager.totalItems - 20;
+        console.log('Decrease page counter');
       }
       this.isLoading = false;
+      this.pager.currentPage = page;
+      console.log(this.pager.totalItems, this.pager.currentPage, page);
     }, err => this.isLoading = false);
   }
 
@@ -109,10 +115,6 @@ export class HomeComponent implements OnInit {
   }
 
   onPageChange(number: number) {
-    if (this.pager.currentPage < number) {
-      this.pager.totalItems = this.pager.totalItems - 20;
-    }
-    this.pager.currentPage = number;
-    this.searchModules();
+    this.searchModules(number);
   }
 }
