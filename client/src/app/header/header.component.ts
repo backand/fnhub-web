@@ -17,10 +17,16 @@ export class HeaderComponent {
     public appState: AppState,
     private backand: BackandService,
     private modalService: NgbModal,
-    private auth : AuthService
+    private auth: AuthService
   ) {
     const route = window.location.pathname;
-    this.appState.set('layout', _.startsWith(route, '/auth') ? 'center' : '');
+    let layoutType = _.startsWith(route, '/auth') ? 'center' : '';
+    this.appState.set('layout', layoutType);
+    if (layoutType === '') {
+      document.body.classList.remove('bg-white');
+      document.body.classList.add('bg-white');
+    }
+
   }
   /**
    * @description 

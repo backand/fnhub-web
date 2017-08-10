@@ -3,12 +3,12 @@ import { Component, Input } from '@angular/core';
 import { AuthService } from '../shared';
 @Component({
   selector: 'top-right-menu',
-  template: `<ul class="nav  {{containerClass}} right-nav">
+  template: `<ul class="nav nav-pills {{containerClass}} right-nav">
+   <li class="nav-item" *ngIf="!auth.isAuthorized()">
+    <a class="nav-link" href="/auth/signin">login</a>
+  </li>
   <li class="nav-item"  *ngIf="!auth.isAuthorized()">
     <a class="nav-link active" href="/auth/signup">signup</a>
-  </li>
-  <li class="nav-item" *ngIf="!auth.isAuthorized()">
-    <a class="nav-link" href="/auth/signin">login</a>
   </li>
   <li class="nav-item" *ngIf="auth.isAuthorized()">
     <a class="nav-link" href="/users/{{auth.user.username}}">{{auth.user.username}}</a>

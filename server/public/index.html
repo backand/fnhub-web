@@ -42,7 +42,9 @@
 <link href="main.css" rel="stylesheet"><link rel="preload" href="main.bundle.js" as="script"/><link rel="preload" href="polyfills.bundle.js" as="script"/></head>
 
 <body>
-
+  <div id="bg">
+  <img src="/assets/img/back_login_1600.jpg" alt="">
+</div>
   <div class="app">
   <div class="app-content">
     <app-header data-comp-id=""></app-header>
