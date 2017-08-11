@@ -4,10 +4,13 @@
       {{error}}
     </div>
     <div class="md-form-group float-label" [ngClass]="{ 'has-danger': f.submitted && !username.valid }">
-      <input type="text" class="md-input" name="username" [(ngModel)]="model.username" #username="ngModel" required>
+      <input type="text" class="md-input" name="username" [(ngModel)]="model.username" #username="ngModel" required pattern="^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*$">
       <label>Username <span>*</span></label>
       <small class="form-text text-muted">This will be your username - you can enter your organization's username next.</small>
-      <div *ngIf="f.submitted && !username.valid" class="form-control-feedback">Username is required</div>
+      <div *ngIf="f.submitted && username.errors">
+        <div *ngIf="username.errors.required" class="form-control-feedback">Username is required</div>
+        <div *ngIf="username.errors.pattern" class="form-control-feedback">Please enter valid username</div>
+      </div>
     </div>
     <div class="md-form-group float-label" [ngClass]="{ 'has-danger': f.submitted && !email.valid }">
       <input type="email" class="md-input" name="email" [(ngModel)]="model.email" #email="ngModel" required pattern="([a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)">
