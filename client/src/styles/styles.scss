@@ -19,7 +19,16 @@ html {
 
 body {
     &.bg-pattern {
-        background: url('/assets/img/back_login_2500.jpg') no-repeat center center fixed;
+        background: url('/assets/img/bg-large.jpg') no-repeat top center fixed;
+        @include media-breakpoint-down(xs) {
+            background: url('/assets/img/bg-xs.jpg') no-repeat top center fixed;
+        }
+        @include media-breakpoint-between(xs,sm) {
+            background: url('/assets/img/bg-small.jpg') no-repeat top center fixed;
+        }
+        @include media-breakpoint-between(sm,md) {
+            background: url('/assets/img/bg-medium.jpg') no-repeat top center fixed;
+        }
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -30,17 +39,14 @@ body {
     }
     &.bg-none {
         .app-header {
-            background: url('/assets/img/header-bg.jpg') no-repeat top center fixed;
-            -webkit-background-size: contain;
-            -moz-background-size: contain;
-            -o-background-size: contain;
-            background-size: contain;
-            @media (max-width: 768px) {
-              -webkit-background-size: cover;
-              -moz-background-size: cover;
-              -o-background-size: cover;
-              background-size: cover;
-          }
+            background: url('/assets/img/header-bg.jpg');
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-attachment: fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
     }
 }
