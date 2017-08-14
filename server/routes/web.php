@@ -25,4 +25,6 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/users','UserController@show');
     Route::get('/users/{user_name}','UserController@show');
+
+    Route::get('/features','FeatureController@index');
 });

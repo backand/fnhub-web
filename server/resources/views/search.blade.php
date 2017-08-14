@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container page-module-detail">
         <div class="row">

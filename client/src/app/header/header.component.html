@@ -10,7 +10,7 @@
   </div>
   <div class="container-fluid" *ngIf="appState.get('layout') !== 'center'">
     <div class="row">
-      <div class="col col-lg-2 col-sm-2 logo-wrapper">
+      <div class="col col-sm-2 col-lg-2' logo-wrapper" [ngClass]="{'col-lg-1': !isSearch}">
         <div class="logo">
           <a href="/" class="fnHub">
             <img src="/assets/img/logo.desktop.png">
@@ -24,14 +24,14 @@
           <div class="row">
             <div class="col hidden-xs-down">
               <div class="row justify-content-md-center">
-                <div class="col-12 col-md-auto">
+                <div class="col-12" [ngClass]="{'col-md-auto': isSearch}">
                   <top-menu [containerClass]="''"></top-menu>
                 </div>
               </div>
             </div>
             <div class="col">
               <div class="row search-wrapper">
-                <div class="col">
+                <div class="col" *ngIf="isSearch">
                   <app-search-module></app-search-module>
                 </div>
                 <div class="col bar hidden-sm-up" (click)="open(content)"><i class="fa text-primary fa-bars"></i></div>

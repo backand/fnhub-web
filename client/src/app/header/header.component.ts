@@ -12,7 +12,7 @@ import { HeaderMenuSidebarComponent } from '../modal-sidebars/header-menu-sideba
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
-
+  public isSearch: boolean = false;
   constructor(
     public appState: AppState,
     private backand: BackandService,
@@ -20,13 +20,13 @@ export class HeaderComponent {
     private auth: AuthService
   ) {
     const route = window.location.pathname;
+    if (_.startsWith(route, '/features')) {
+      this.isSearch = false;
+    } else {
+      this.isSearch = true;
+    }
     let layoutType = _.startsWith(route, '/auth') ? 'center' : '';
     this.appState.set('layout', layoutType);
-    if (layoutType === '') {
-      document.body.classList.remove('bg-white');
-      document.body.classList.add('bg-white');
-    }
-
   }
   /**
    * @description 

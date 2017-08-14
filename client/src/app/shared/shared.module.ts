@@ -2,7 +2,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchComponent } from './search-field.component';
 import { AppService } from './app.service';
 
 @NgModule({
@@ -11,10 +10,8 @@ import { AppService } from './app.service';
     FormsModule
   ],
   declarations: [
-    SearchComponent
   ],
   exports: [
-    SearchComponent
   ]
 })
 export class SharedModule {

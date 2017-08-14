@@ -33,11 +33,11 @@ import { ENV_PROVIDERS } from './environment';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms'
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 // App is our top level component
 import { AppComponent } from './app.component';
-import { SearchComponent } from './shared/search-field.component';
+import { SearchComponent } from './search';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
@@ -80,6 +80,10 @@ type StoreType = {
 // Route config let's you map routes to components
 const routes: Routes = [
   {
+    path: 'features',
+    children: []
+  },
+  {
     path: 'auth/:action',
     children: []
   },
@@ -109,7 +113,8 @@ const routes: Routes = [
     SignupComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    LanguageFilterComponent
+    LanguageFilterComponent,
+    SearchComponent
   ],
   /**
    * Import Angular's modules.
@@ -145,7 +150,8 @@ const routes: Routes = [
     ResetPasswordComponent,
     ForgotPasswordComponent,
     HeaderMenuSidebarComponent,
-    FiltersSidebarComponent
+    FiltersSidebarComponent,
+    SearchComponent
   ]
 })
 export class AppModule {
@@ -156,6 +162,7 @@ export class AppModule {
     'forgot_password': [ForgotPasswordComponent],
     'reset_password': [ResetPasswordComponent],
     'default': [HomeComponent],
+    'app_search_module': [SearchComponent],
     'users': []
   };
   constructor(

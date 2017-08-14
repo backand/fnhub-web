@@ -10,18 +10,26 @@
 @import "module-search.scss";
 @import "syntax-highlight.scss";
 @import "modal-sidebar.scss";
-.bg-white {
-    .app-body {
-        background: $white;
-    }
-}
-
 body {
-    background: url('/assets/img/back_login_2500.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    &.bg-pattern {
+        background: url('/assets/img/back_login_2500.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        .app-header {
+            background: none !important;
+        }
+    }
+    &.bg-white {
+        .app-header {
+            background: url('/assets/img/header-bg.jpg') no-repeat top center fixed;
+            -webkit-background-size: contain;
+            -moz-background-size: contain;
+            -o-background-size: contain;
+            background-size: contain;
+        }
+    }
 }
 
 //set .container width to 1490 on larger devices

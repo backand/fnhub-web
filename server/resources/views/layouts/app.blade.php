@@ -14,12 +14,6 @@
 	<meta name="msapplication-TileColor" content="#00bcd4">
 	<meta name="msapplication-TileImage" content="/assets/icon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#00bcd4">
-  
-
-
-  
-
-  
 
   <!-- Async Google Analytics: change UA-71073175-1 to be your site's ID -->
   <script>
@@ -33,7 +27,7 @@
   <!-- CSS will be injected by webpack here -->
   <!-- Preload link tags will be injected by webpack here -->
   <link href="main.css" rel="stylesheet"><link rel="preload" href="main.bundle.js" as="script"/><link rel="preload" href="polyfills.bundle.js" as="script"/></head>
-<body>
+<body class="bg-white  @stack('body-class') ">
   <div class="app">
   <div class="app-content">
     <app-header></app-header>
