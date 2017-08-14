@@ -27,7 +27,7 @@
   <!-- CSS will be injected by webpack here -->
   <!-- Preload link tags will be injected by webpack here -->
   <link href="main.css" rel="stylesheet"><link rel="preload" href="main.bundle.js" as="script"/><link rel="preload" href="polyfills.bundle.js" as="script"/></head>
-<body class="bg-white  @stack('body-class') ">
+<body class="bg-none  @stack('body-class') ">
   <div class="app">
   <div class="app-content">
     <app-header></app-header>

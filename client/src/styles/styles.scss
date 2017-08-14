@@ -10,6 +10,7 @@
 @import "module-search.scss";
 @import "syntax-highlight.scss";
 @import "modal-sidebar.scss";
+@import "feature.scss";
 body {
     &.bg-pattern {
         background: url('/assets/img/back_login_2500.jpg') no-repeat center center fixed;
@@ -21,7 +22,7 @@ body {
             background: none !important;
         }
     }
-    &.bg-white {
+    &.bg-none {
         .app-header {
             background: url('/assets/img/header-bg.jpg') no-repeat top center fixed;
             -webkit-background-size: contain;
@@ -59,6 +60,10 @@ textarea {
 .primary {
     background: $primary;
     color: $dark-white;
+}
+
+.bg-white {
+    background: $white;
 }
 
 .btn {
@@ -156,6 +161,4 @@ textarea {
         }
     }
 }
-
-
 /** inject modules scss */

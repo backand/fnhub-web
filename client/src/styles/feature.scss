@@ -1,0 +1,35 @@
+.page-features {
+    .features-banner {
+        max-width: 700px;
+        padding-bottom: 100px;
+    }
+    .page-features-container {
+        background: $white;
+        @media (min-width: 940px) {
+            padding: 0 60px;
+        }
+    }
+    .section {
+      @include make-container();
+        .section-item {
+            padding: 90px 0;
+            border-bottom: 1px solid #dbdbdb;
+            &:last-child {
+                border-bottom: 0 none;
+            }
+            h2 {
+                margin-bottom: 15px;
+            }
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &.cli-section {
+            padding-left: 60px;
+            padding-right: 60px;
+            .section-item {
+                border-bottom: 1px solid #dbdbdb;
+            }
+        }
+    }
+}
