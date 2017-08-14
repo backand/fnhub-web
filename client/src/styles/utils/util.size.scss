@@ -115,6 +115,10 @@
   max-width: 920px !important;
 } 
 
+.w-m-440{
+  max-width: 440px !important;
+} 
+
 @include media-breakpoint-down(sm) {
   .w-auto-sm{
     width: auto;
