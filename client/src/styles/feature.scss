@@ -5,19 +5,35 @@
     }
     .page-features-wrapper {
         background: $white;
+        @media (max-width: 768px) {
+            text-align: center;
+        }
         .section {
             margin-left: -15px;
             margin-right: -15px;
-            @media (min-width: 940px) {
-                padding: rem(70);
+            padding: rem(70);
+            @media (max-width: 768px) {
+                padding-left: 15px;
+                padding-right: 15px;
             }
             .section-header {
-              text-align: center;
-              margin-bottom: rem(60);
+                text-align: center;
+                margin-bottom: rem(60);
                 .heading {}
                 .description {}
             }
             .section-body {
+                @media (max-width: 768px) {
+                    .row {
+                        div[class^="col-"] {
+                            text-align: center;
+                            margin-bottom: rem(16);
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

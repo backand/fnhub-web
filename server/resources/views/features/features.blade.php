@@ -99,7 +99,7 @@
         </div>
         <!--./community driven -->
         <!--/cli-powered -->
-        <div class="section ">
+        <div class="section cli-powered">
             <div class="section-header">
                 <h2 class="_300">CLI-Powered</h2>
                 <h5>FnHub.io is focused on building a serverless community. Our source code is available on
@@ -107,23 +107,23 @@
             </div>
             <div class="section-body  w-m-920 mx-auto">
                 <div class="row">
-                    <div class="col-sm-2 col-xs-6">
-                        <img src="/assets/img/github.png">
+                    <div class="col-sm-4 col-md-2 col-6">
+                        <img src="/assets/img/github.png" class="img-fluid">
                     </div>
-                    <div class="col-sm-2 col-xs-6">
-                        <img src="/assets/img/node.png">
+                    <div class="col-sm-4 col-md-2 col-6">
+                        <img src="/assets/img/node.png" class="img-fluid">
                     </div>
-                    <div class="col-sm-2 col-xs-6">
-                        <img src="/assets/img/aws-lambda.png">
+                    <div class="col-sm-4 col-md-2 col-6">
+                        <img src="/assets/img/aws-lambda.png" class="img-fluid">
                     </div>
-                    <div class="col-sm-2 col-xs-6">
-                        <img src="/assets/img/google.png">
+                    <div class="col-sm-4 col-md-2 col-6">
+                        <img src="/assets/img/google.png" class="img-fluid">
                     </div>
-                    <div class="col-sm-2 col-xs-6">
-                        <img src="/assets/img/microsoft.png">
+                    <div class="col-sm-4 col-md-2 col-6">
+                        <img src="/assets/img/microsoft.png" class="img-fluid"> 
                     </div>
-                    <div class="col-sm-2 col-xs-6">
-                        <img src="/assets/img/python-logo.png">
+                    <div class="col-sm-4 col-md-2 col-6">
+                        <img src="/assets/img/python-logo.png" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -140,12 +140,12 @@
             <div class="section-body w-m-440 mx-auto">
                 <div class="row justify-content-md-center">
                     <div class="col-sm-6">
-                        <button class="btn primary btn-block btn-lg" type="button">Publish a
+                        <button class="btn btn-brand btn-block btn-lg" type="button">Publish a
                             package
                         </button>
                     </div>
                     <div class="col-sm-6">
-                        <button class="btn primary btn-block btn-lg" type="button">Import a
+                        <button class="btn btn-outline-brand btn-block btn-lg" type="button">Import a
                             package
                         </button>
                     </div>

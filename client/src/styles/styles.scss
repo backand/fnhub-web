@@ -11,6 +11,12 @@
 @import "syntax-highlight.scss";
 @import "modal-sidebar.scss";
 @import "feature.scss";
+html {
+    @media (max-width: 768px) {
+        font-size: rem(14);
+    }
+}
+
 body {
     &.bg-pattern {
         background: url('/assets/img/back_login_2500.jpg') no-repeat center center fixed;
@@ -29,6 +35,12 @@ body {
             -moz-background-size: contain;
             -o-background-size: contain;
             background-size: contain;
+            @media (max-width: 768px) {
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+          }
         }
     }
 }
@@ -57,12 +69,16 @@ textarea {
     font-family: $font-family-sans-serif;
 }
 
-h1,.h1{
-  font-size: rem(45)
+h1,
+.h1 {
+    font-size: rem(45)
 }
-h2, .h2{
-  font-size: rem(40);
+
+h2,
+.h2 {
+    font-size: rem(40);
 }
+
 .primary {
     background: $primary;
     color: $dark-white;
@@ -80,21 +96,32 @@ h2, .h2{
         cursor: not-allowed;
     }
 }
-hr{
-    border: 0; 
-    height: 1px; 
+
+.btn-brand {
+    @include button-variant($white,
+    $primary,
+    $primary);
+}
+
+// Remove all backgrounds
+.btn-outline-brand {
+    @include button-outline-variant($primary);
+}
+
+hr {
+    border: 0;
+    height: 1px;
     background-image: -webkit-linear-gradient(left, #f0f0f0, #dbdbdb, #f0f0f0);
     background-image: -moz-linear-gradient(left, #f0f0f0, #dbdbdb, #f0f0f0);
     background-image: -ms-linear-gradient(left, #f0f0f0, #dbdbdb, #f0f0f0);
-    background-image: -o-linear-gradient(left, #f0f0f0, #dbdbdb, #f0f0f0); 
-    &.large{
-      margin-top: 4rem;
-      margin-bottom: 4rem;
+    background-image: -o-linear-gradient(left, #f0f0f0, #dbdbdb, #f0f0f0);
+    &.large {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
     }
-
-    &.small{
-      margin-top:2rem;
-      margin-bottom: 2rem;
+    &.small {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -184,4 +211,6 @@ hr{
         }
     }
 }
+
+
 /** inject modules scss */
