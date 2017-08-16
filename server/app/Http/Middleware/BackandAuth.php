@@ -20,7 +20,7 @@ class BackandAuth
       $user = isset($_COOKIE['BACKAND_user']) ? json_decode($_COOKIE['BACKAND_user'], true) : null;
       //die($request->path());
       if($request->path() === '/'){
-        if($user){
+        if(!$user && !($request->input('q') || $request->input('l')) ){
           return redirect('/features');
         } 
       }
