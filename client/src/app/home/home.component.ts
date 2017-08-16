@@ -8,6 +8,7 @@ import { BackandService } from '@backand/angular2-sdk';
 import * as _ from 'lodash';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 import { AppState } from '../app.service';
 import { Title } from './title';
@@ -40,12 +41,14 @@ import { Constants } from '../app.constants';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class HomeComponent implements OnInit {
+  @BlockUI() blockUI: NgBlockUI;
   searchQuery: string;
   routeEvent: any;
   modules: any = [];
   selected_languages: string;
   filter: any;
-  isLoading: boolean;
+  isLastPage : boolean = false;
+  noRecords : boolean = false;
   public pager: PaginationInstance = {
     itemsPerPage: Constants.RECORD_PER_PAGE,
     currentPage: 1,
@@ -61,7 +64,6 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.isLoading = true;
     this.routeEvent = this.route
       .queryParams
       .subscribe(params => {
@@ -84,7 +86,7 @@ export class HomeComponent implements OnInit {
   }
 
   searchModules(page: number): void {
-    this.isLoading = true;
+    this.blockUI.start();
     this.backand.fn.post("keywordsSearch", {
       "q": this.searchQuery,
       "languages": this.selected_languages,
@@ -92,7 +94,9 @@ export class HomeComponent implements OnInit {
       "pageNumber": page
     }).then((res: any) => {
       this.modules = _.get(res, 'data') || [];
-      this.pager.totalItems = this.pager.totalItems;
+      this.noRecords = (this.modules.length === 0) ? true : false;
+      this.isLastPage = (this.modules.length < Constants.RECORD_PER_PAGE) ? true : false;
+      
       if (this.modules.length >= this.pager.itemsPerPage && page >= this.pager.currentPage) {
         this.pager.totalItems = this.pager.totalItems + 20;
         console.log('Increament page counter');
@@ -101,10 +105,12 @@ export class HomeComponent implements OnInit {
         this.pager.totalItems = this.pager.totalItems - 20;
         console.log('Decrease page counter');
       }
-      this.isLoading = false;
       this.pager.currentPage = page;
       console.log(this.pager.totalItems, this.pager.currentPage, page);
-    }, err => this.isLoading = false);
+      this.blockUI.stop();
+    }, err =>{
+      this.blockUI.stop();
+    });
   }
 
   open() {
