@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
+import { CookieModule } from 'ngx-cookie';
+import { BlockUIModule } from 'ng-block-ui';
 
 import {
   NgModule,
@@ -128,7 +130,9 @@ const routes: Routes = [
     NgbModule.forRoot(),
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CookieModule.forRoot(),
+    BlockUIModule
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.

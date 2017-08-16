@@ -5,6 +5,7 @@ import { BackandService } from '@backand/angular2-sdk';
 import { AppService } from '../shared/app.service';
 import * as _ from 'lodash';
 import { RecaptchaComponent } from 'ng-recaptcha';
+import { BlockUI, NgBlockUI } from "ng-block-ui";
 
 
 export interface User {
@@ -19,6 +20,7 @@ export interface User {
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
+  @BlockUI() blockUI: NgBlockUI;
   @ViewChild(RecaptchaComponent) reCaptcha: RecaptchaComponent;
   public model: User;
   public error: any;
@@ -44,6 +46,7 @@ export class SignupComponent {
    * @memberof SignupComponent
    */
   signup() {
+    this.blockUI.start();
     this.error = '';
     this.backand
       .signup(
@@ -59,16 +62,18 @@ export class SignupComponent {
       data => {
         console.log(data);
         this.appService.redirect('/');
+        this.blockUI.stop();
       },
-      (error:any) => {
+      (error: any) => {
         this.reCaptcha.reset();
-        let er:any = _.get(error, 'data.error_description') || '';
-        if(_.toLower('Membership failure:InvalidPassword') === _.toLower(er)){
+        let er: any = _.get(error, 'data.error_description') || '';
+        if (_.toLower('Membership failure:InvalidPassword') === _.toLower(er)) {
           er = 'Password is not valid';
-        }else if(error.status == 417 && _.isString(error.data) && error.data.lastIndexOf('users_username_unique') >=0){
-          er = 'Username '+this.model.username + ' is already signed up to this app';
+        } else if (error.status == 417 && _.isString(error.data) && error.data.lastIndexOf('users_username_unique') >= 0) {
+          er = 'Username ' + this.model.username + ' is already signed up to this app';
         }
         this.error = er;
+        this.blockUI.stop();
       });
   }
   /**

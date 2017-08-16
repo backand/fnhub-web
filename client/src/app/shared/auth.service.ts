@@ -3,6 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 
 import { BackandService } from '@backand/angular2-sdk';
+import { CookieService } from 'ngx-cookie';
+
 
 @Injectable()
 export class AuthService {
@@ -10,7 +12,9 @@ export class AuthService {
   private prefix = 'BACKAND';
   private delimiter = '__________';
 
-  constructor(private backand: BackandService) {
+  constructor(
+    private backand: BackandService,
+    private cookieService: CookieService) {
     /*
     var key = "user";
     console.log(`${this.prefix}_${key}`);
@@ -64,6 +68,7 @@ export class AuthService {
     this.backand.signout();
     this.backand.useAnonymousAuth();
     this.clear();
+    this.cookieService.removeAll();
     location.reload(true);
   }
 
@@ -77,6 +82,7 @@ export class AuthService {
     this.backand.user.getUserDetails()
       .then(res => {
         this.user = res.data;
+        this.cookieService.putObject('BACKAND_user', this.user);
       })
       .catch(err => {
         this.user = null;

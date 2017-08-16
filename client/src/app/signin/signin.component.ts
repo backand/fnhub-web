@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { BackandService } from '@backand/angular2-sdk';
 import { AppService} from '../shared/app.service';
 import * as _ from 'lodash';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 @Component({
   selector : 'signin',
@@ -10,6 +11,7 @@ import * as _ from 'lodash';
   styleUrls: ['./signin.component.scss']
 })
 export class SignInComponent {
+  @BlockUI() blockUI: NgBlockUI;
   model: any = {};
   error: any;
   constructor(
@@ -22,6 +24,7 @@ export class SignInComponent {
   }
 
   signin() {
+    this.blockUI.start();
     this.error = '';
     this
       .backand
@@ -29,10 +32,12 @@ export class SignInComponent {
       data => {
         console.log(data);
         this.appService.redirect('/');
+        this.blockUI.stop();
       },
       error => {
         console.error(error);
         this.error = _.get(error, 'data.error_description');
+        this.blockUI.stop();
       });
   }
 

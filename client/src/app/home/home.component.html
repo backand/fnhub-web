@@ -1,4 +1,4 @@
-<div class="container page-home">
+<div class="container page-home" *blockUI>
   <div class="row no-gutters">
     <div class="col-md-2 sidebar hidden-xs-down">
       <nav>
@@ -25,7 +25,7 @@
 
     <div class="col-md-10">
       <div class="list-container">
-        <h2 class="page-heading" *ngIf="searchQuery">{{modules.length}} Packages found for <span class="text-primary">{{searchQuery}}</span></h2>
+        <!-- h2 class="page-heading" *ngIf="searchQuery">{{modules.length}} Packages found for <span class="text-primary">{{searchQuery}}</span></h2 -->
         <ul class="list package-list">
           <li class="list-item" *ngFor="let module of modules | paginate: pager ">
             <div class="list-body">
@@ -44,15 +44,15 @@
           </div>
         </li -->
         </ul>
-        <p *ngIf="modules.length === 0 && !isLoading">No record found</p>
+        <p *ngIf="noRecords">No record found</p>
         <div class="d-flex justify-content-center">
-          <pagination-template #p="paginationApi" (pageChange)="onPageChange($event)" *ngIf="!isLoading">
+          <pagination-template #p="paginationApi" (pageChange)="onPageChange($event)">
             <nav>
               <ul class="pagination pagination-lg">
                 <li class="page-item" [class.disabled]="p.isFirstPage()">
                   <span class="page-link text-link" tabindex="-1" (click)="p.previous()">Previous</span>
                 </li>
-                <li class="page-item" [class.disabled]="p.isLastPage()">
+                <li class="page-item" [class.disabled]="p.isLastPage() || isLastPage">
                   <span class="page-link text-link" (click)="p.next()">Next</span>
                 </li>
               </ul>

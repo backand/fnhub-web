@@ -11,6 +11,7 @@
 @import "syntax-highlight.scss";
 @import "modal-sidebar.scss";
 @import "feature.scss";
+@import "loader.scss";
 html {
     @media (max-width: 768px) {
         font-size: rem(14);
