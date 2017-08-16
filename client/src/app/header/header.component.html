@@ -31,8 +31,8 @@
             </div>
             <div class="col">
               <div class="row search-wrapper">
-                <div class="col"  [ngStyle]="{'visibility': !isSearch ? 'hidden' : 'visisble'}">
-                  <app-search-module></app-search-module>
+                <div class="col">
+                  <app-search-module data-comp-id="app_search_module" *ngIf="isSearch"></app-search-module>
                 </div>
                 <div class="col bar hidden-sm-up" (click)="open(content)"><i class="fa text-primary fa-bars"></i></div>
               </div>

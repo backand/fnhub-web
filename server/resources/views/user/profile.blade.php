@@ -7,8 +7,8 @@
                 <div class="page-content">
                     <div class="d-flex mb-3">
                         <div>
-                            <img class="w-64 circle img-thumbnail" src="/assets/img/avatar/avatar.png"
-                                 alt="Generic placeholder image">
+                            <img class="w-56 circle img-thumbnail" src="{{ (isset($user['avatar']) && $user['avatar'] != '') ? $user['avatar'] : '/assets/img/avatar/user_65px.png' }}"
+                                 alt="{{$user['fullName']}} avatar">
                         </div>
                         <div class="align-self-center p-2 pl-3"><h2 class="mt-0 mb-0">{{$user['fullName']}}</h2></div>
                     </div>
@@ -59,7 +59,7 @@
                         <ul class="list small sidebar-list">
                             <li class="list-item">
                                 <div class="list-left">
-                                    <img src="/assets/img/avatar/avatar.png" class="w-32 circle img-thumbnail">
+                                    <img src="/assets/img/avatar/user_65px.png" class="w-32 circle img-thumbnail">
                                 </div>
                                 <div class="list-body">
                                     <span class="text-primary">UserName</span> <span class="text-gray-lt">updated at 12/12/2017</span>
@@ -90,9 +90,9 @@
                     <div class="sidebar-item">
                       <div class="sidebar-item-heading">collaboators <a href="" class="pull-right text-primary">All</a></div>
                       <div>
-                        <img src="/assets/img/avatar/avatar.png" class="w-48 circle img-thumbnail m-r-sm"> <img src="/assets/img/avatar/avatar04.png"
-                          class="w-48 circle img-thumbnail m-r-sm"><img src="/assets/img/avatar/avatar2.png" class="w-48 circle img-thumbnail m-r-sm">
-                        <img src="/assets/img/avatar/avatar3.png" class="w-48 circle img-thumbnail">
+                        <img src="/assets/img/avatar/user_65px.png" class="w-48 circle img-thumbnail m-r-sm"> <img src="/assets/img/avatar/user_65px.png"
+                          class="w-48 circle img-thumbnail m-r-sm"><img src="/assets/img/avatar/user_65px.png" class="w-48 circle img-thumbnail m-r-sm">
+                        <img src="/assets/img/avatar/user_65px.png" class="w-48 circle img-thumbnail">
                       </div>
                     </div>
                 </nav>

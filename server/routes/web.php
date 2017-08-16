@@ -12,7 +12,7 @@
 */
 
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web','backandAuth']], function () {
       Route::get('/', function () {
         return view('home');
     });
