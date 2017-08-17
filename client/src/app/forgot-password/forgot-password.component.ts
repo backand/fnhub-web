@@ -29,7 +29,7 @@ export class ForgotPasswordComponent {
     this.error = '';
     this.backand.requestResetPassword(this.model.username)
     .then(data => {
-        this.appService.redirect('/');
+       this.appService.redirect('/auth/signin');
         this.blockUI.stop();
       },
       error => {
