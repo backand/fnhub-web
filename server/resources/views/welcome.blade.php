@@ -5,8 +5,8 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>funhub - Publish and Consume lambda functions</title>
-  <meta name="description" content="funhub - Publish and Consume lambda functions">
+  <title>fnhub - Publish and Consume lambda functions</title>
+  <meta name="description" content="fnhub - Publish and Consume lambda functions">
   <!-- base url -->
   <base href="/">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">

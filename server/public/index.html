@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>funhub - Publish and Consume lambda functions</title>
-  <meta name="description" content="funhub - Publish and Consume lambda functions">
+  <title>fnhub - Publish and Consume lambda functions</title>
+  <meta name="description" content="fnhub - Publish and Consume lambda functions">
   <!-- base url -->
   <base href="/">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,7 +31,7 @@
   
   <!-- CSS will be injected by webpack here -->
   <!-- Preload link tags will be injected by webpack here -->
-<link href="main.3eed84d03b140a29d7e4d63256c7247d.css" rel="stylesheet"><link rel="preload" href="polyfills.1c23dd72ba702cb069aa.bundle.js" as="script"/><link rel="preload" href="main.ff861f944950cd670443.bundle.js" as="script"/></head>
+<link href="main.3eed84d03b140a29d7e4d63256c7247d.css" rel="stylesheet"><link rel="preload" href="polyfills.1c23dd72ba702cb069aa.bundle.js" as="script"/><link rel="preload" href="main.d260c78a2f11173e0e5c.bundle.js" as="script"/></head>
 <body class="bg-none  @stack('body-class') ">
   <div class="app">
   <div class="app-content">
@@ -43,5 +43,5 @@
   </div>
 </div>
   <!-- Scripts will be injected by webpack here -->
-<script type="text/javascript" src="polyfills.1c23dd72ba702cb069aa.bundle.js"></script><script type="text/javascript" src="main.ff861f944950cd670443.bundle.js" async></script></body>
+<script type="text/javascript" src="polyfills.1c23dd72ba702cb069aa.bundle.js"></script><script type="text/javascript" src="main.d260c78a2f11173e0e5c.bundle.js" async></script></body>
 </html>

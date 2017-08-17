@@ -1,7 +1,7 @@
 * Hostname api.backand.com was found in DNS cache
-*   Trying 34.198.105.245...
+*   Trying 34.197.8.216...
 * TCP_NODELAY set
-* Connected to api.backand.com (34.198.105.245) port 443 (#0)
+* Connected to api.backand.com (34.197.8.216) port 443 (#0)
 * TLS 1.2 connection using TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
 * Server certificate: *.backand.com
 * Server certificate: Amazon
@@ -21,9 +21,9 @@ Content-Length: 121
 < Access-Control-Expose-Headers: Backand-Action-Guid, Backand-Action-Stack
 < Cache-control: no-cache="set-cookie"
 < Content-Type: application/json; charset=utf-8
-< Date: Wed, 16 Aug 2017 19:15:37 GMT
+< Date: Thu, 17 Aug 2017 08:54:20 GMT
 < Server: Microsoft-IIS/8.5
-< Set-Cookie: AWSELB=19BDB7D51EFF0C65570A004DECB0B50F3A82A3917CEE178BDA1CED2C544E9A6DA809C67475BA50EAF2FE32B1B38CF32C777C81B829E3C2C1F45D762F1CF1364693D850FFF6;PATH=/
+< Set-Cookie: AWSELB=19BDB7D51EFF0C65570A004DECB0B50F3A82A3917CE4F6640F759C08E081056424D1A435241E8D8F25676AF68E2B63B822F88CBF725133BF5E4BD097D7CBC8C610ECC170E1;PATH=/
 < X-Powered-By: ASP.NET
 < Content-Length: 35797
 < Connection: keep-alive
