@@ -1,5 +1,3 @@
-* Hostname in DNS cache was stale, zapped
-* Hostname in DNS cache was stale, zapped
 *   Trying 34.197.8.216...
 * TCP_NODELAY set
 * Connected to api.backand.com (34.197.8.216) port 443 (#0)
@@ -8,26 +6,25 @@
 * Server certificate: Amazon
 * Server certificate: Amazon Root CA 1
 * Server certificate: Starfield Services Root Certificate Authority - G2
-> POST /1/function/general/mdToHtml?parameters={"mdFileUri":"https://raw.githubusercontent.com/itayher/serverless-examples/master/README.md"} HTTP/1.1
+> POST /1/function/general/module HTTP/1.1
 Host: api.backand.com
 Accept: */*
 AnonymousToken: f10673bb-d12a-4245-8eca-312add606059
 AppName:funhub
 Content-Type: application/json
-Content-Length: 121
+Content-Length: 62
 
-* upload completely sent off: 121 out of 121 bytes
+* upload completely sent off: 62 out of 62 bytes
 < HTTP/1.1 200 OK
 < Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE
 < Access-Control-Expose-Headers: Backand-Action-Guid, Backand-Action-Stack
 < Cache-control: no-cache="set-cookie"
 < Content-Type: application/json; charset=utf-8
-< Date: Tue, 15 Aug 2017 08:22:06 GMT
+< Date: Thu, 17 Aug 2017 04:49:03 GMT
 < Server: Microsoft-IIS/8.5
-< Set-Cookie: AWSELB=19BDB7D51EFF0C65570A004DECB0B50F3A82A3917CE4F6640F759C08E081056424D1A43524BA50EAF2FE32B1B38CF32C777C81B829E3C2C1F45D762F1CF1364693D850FFF6;PATH=/
+< Set-Cookie: AWSELB=19BDB7D51EFF0C65570A004DECB0B50F3A82A3917CE4F6640F759C08E081056424D1A435241E8D8F25676AF68E2B63B822F88CBF725133BF5E4BD097D7CBC8C610ECC170E1;PATH=/
 < X-Powered-By: ASP.NET
-< Content-Length: 35797
+< Content-Length: 179
 < Connection: keep-alive
 < 
-* Curl_http_done: called premature == 0
 * Connection #0 to host api.backand.com left intact

@@ -1,9 +1,10 @@
 // angular
 import { Component } from '@angular/core';
 import { BackandService } from '@backand/angular2-sdk';
-import { AppService} from '../shared/app.service';
+import { AppService, AuthService} from '../shared';
 import * as _ from 'lodash';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
+
 
 @Component({
   selector : 'signin',
@@ -16,7 +17,8 @@ export class SignInComponent {
   error: any;
   constructor(
     private backand: BackandService,
-    private appService : AppService
+    private appService : AppService,
+    private authService: AuthService
   ) { }
 
   public ngOnInit() {
@@ -30,7 +32,7 @@ export class SignInComponent {
       .backand
       .signin(this.model.username, this.model.password).then(
       data => {
-        console.log(data);
+        this.authService.setUser();
         this.appService.redirect('/');
         this.blockUI.stop();
       },

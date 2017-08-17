@@ -7,7 +7,7 @@
   <title>funhub - Publish and Consume lambda functions</title>
   <meta name="description" content="funhub - Publish and Consume lambda functions">
   <!-- base url -->
-    <base href="/">
+  <base href="/">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Configured Head Tags  -->
 	<link rel="manifest" href="/assets/manifest.json">
@@ -23,10 +23,15 @@
   </script>
   <script async src="https://www.google-analytics.com/analytics.js"></script>
   <!-- End Google Analytics -->
+  
 
+
+  
+
+  
   <!-- CSS will be injected by webpack here -->
   <!-- Preload link tags will be injected by webpack here -->
-  <link href="main.css" rel="stylesheet"><link rel="preload" href="main.bundle.js" as="script"/><link rel="preload" href="polyfills.bundle.js" as="script"/></head>
+<link href="main.3eed84d03b140a29d7e4d63256c7247d.css" rel="stylesheet"><link rel="preload" href="polyfills.1c23dd72ba702cb069aa.bundle.js" as="script"/><link rel="preload" href="main.ff861f944950cd670443.bundle.js" as="script"/></head>
 <body class="bg-none  @stack('body-class') ">
   <div class="app">
   <div class="app-content">
@@ -38,7 +43,5 @@
   </div>
 </div>
   <!-- Scripts will be injected by webpack here -->
-<script type="text/javascript" src="polyfills.bundle.js"></script>
-<script type="text/javascript" src="main.bundle.js" async></script>
-</body>
+<script type="text/javascript" src="polyfills.1c23dd72ba702cb069aa.bundle.js"></script><script type="text/javascript" src="main.ff861f944950cd670443.bundle.js" async></script></body>
 </html>
