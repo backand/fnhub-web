@@ -291,7 +291,7 @@ module.exports = function (options) {
       new CopyWebpackPlugin([
         { from: 'src/assets', to: 'assets' },
         { from: 'src/meta'},
-        { from: helpers.serverRoot('public/index.html'), to: helpers.serverRoot('resources/views/welcome.blade.php') },
+        { from: helpers.serverRoot('public/index.html'), to: helpers.serverRoot('resources/views/layouts/app.blade.php') },
       ],
         isProd ? { ignore: [ 'mock-data/**/*' ] } : undefined
       ),
@@ -340,7 +340,10 @@ module.exports = function (options) {
       new HtmlWebpackPlugin({
         template: 'src/index.html',
         title: METADATA.title,
-        chunksSortMode: 'dependency',
+        chunksSortMode: function (a, b) {
+          var order = ["polyfills", "libs", "js", "vendor", "main"];
+          return order.indexOf(a.names[0]) - order.indexOf(b.names[0]);
+        },
         metadata: METADATA,
         inject: 'body'
       }),

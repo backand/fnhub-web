@@ -73,8 +73,8 @@ module.exports = function (env) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-filename
        */
-      //filename: '[name].[chunkhash].bundle.js',
-      filename: '[name].bundle.js',
+      filename: '[name].[chunkhash].bundle.js',
+      //filename: '[name].bundle.js',
       /**
        * The filename of the SourceMaps for the JavaScript files.
        * They are inside the output.path directory.
@@ -89,8 +89,8 @@ module.exports = function (env) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
        */
-      //chunkFilename: '[name].[chunkhash].chunk.js'
-      chunkFilename: '[name].chunk.js'
+      chunkFilename: '[name].[chunkhash].chunk.js'
+      //chunkFilename: '[name].chunk.js'
 
     },
 
@@ -149,8 +149,8 @@ module.exports = function (env) {
        *
        * See: https://github.com/webpack/extract-text-webpack-plugin
        */
-      new ExtractTextPlugin('[name].css'),
-      //new ExtractTextPlugin('[name].[contenthash].css'),
+      //new ExtractTextPlugin('[name].css'),
+      new ExtractTextPlugin('[name].[contenthash].css'),
 
       /**
        * Plugin: DefinePlugin
