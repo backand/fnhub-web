@@ -62,7 +62,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 
 
 import { SharedModule } from './shared/shared.module';
-import { AppService, AuthService } from './shared';
+import { AppService, AuthService, EqualValidator } from './shared';
 import { BackandService } from '@backand/angular2-sdk';
 
 import '../styles/styles.scss';
@@ -116,7 +116,8 @@ const routes: Routes = [
     ResetPasswordComponent,
     ForgotPasswordComponent,
     LanguageFilterComponent,
-    SearchComponent
+    SearchComponent,
+    EqualValidator
   ],
   /**
    * Import Angular's modules.

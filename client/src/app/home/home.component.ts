@@ -9,6 +9,8 @@ import * as _ from 'lodash';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaginationInstance } from 'ngx-pagination';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import 'rxjs/add/operator/debounceTime';
+
 
 import { AppState } from '../app.service';
 import { Title } from './title';
@@ -66,14 +68,16 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.routeEvent = this.route
       .queryParams
+      .debounceTime(200)
       .subscribe(params => {
+        console.log('Route has changes with - ',params );
         // Defaults to 0 if no query param provided.
         this.searchQuery = params['q'] || '';
         this.searchModules(1);
       });
 
     this.filter = this.appService.filterEmmiter$.subscribe(filter => {
-      console.warn('selected_languages', filter);
+      console.warn('language is selected - ', filter);
       this.selected_languages = filter;
       let lng = _.isArray(filter) ? filter.join(',') : (_.isString(filter) ? filter : '');
       this.router.navigate(['/'], { queryParams: { l: lng, q: this.searchQuery } });
@@ -81,10 +85,13 @@ export class HomeComponent implements OnInit {
 
   }
 
-  ngOnDestroy(): void {
-    // if (!!this.filter) this.filter.unsubscribe();
-  }
-
+  ngOnDestroy(): void {}
+  /**
+   * @function searchModules
+   * @description Search module with parameters{ q: searchText, l: languages}
+   * @param {number} page 
+   * @memberof HomeComponent
+   */
   searchModules(page: number): void {
     this.blockUI.start();
     this.backand.fn.post("keywordsSearch", {
@@ -113,6 +120,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /**
+   * @function open
+   * @description opens page left sidebar in modal on small devices
+   * @memberof HomeComponent
+   */
   open() {
     const modalRef = this.modalService.open(FiltersSidebarComponent, {
       windowClass: 'left white',
@@ -120,6 +132,12 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /**
+   * @function onPageChange
+   * @description An handler function which is called when page is changed.
+   * @param {number} number 
+   * @memberof HomeComponent
+   */
   onPageChange(number: number) {
     this.searchModules(number);
   }

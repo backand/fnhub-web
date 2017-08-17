@@ -24,6 +24,9 @@
   <script async src="https://www.google-analytics.com/analytics.js"></script>
   <!-- End Google Analytics -->
   
+  <!-- Configured Head Tags  -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  
 
 
   
@@ -31,7 +34,7 @@
   
   <!-- CSS will be injected by webpack here -->
   <!-- Preload link tags will be injected by webpack here -->
-<link href="main.3eed84d03b140a29d7e4d63256c7247d.css" rel="stylesheet"><link rel="preload" href="polyfills.1c23dd72ba702cb069aa.bundle.js" as="script"/><link rel="preload" href="main.d260c78a2f11173e0e5c.bundle.js" as="script"/></head>
+<link href="main.3eed84d03b140a29d7e4d63256c7247d.css" rel="stylesheet"><link rel="preload" href="polyfills.1c23dd72ba702cb069aa.bundle.js" as="script"/><link rel="preload" href="main.a9750e8eadc975fb6da3.bundle.js" as="script"/></head>
 <body class="bg-none  @stack('body-class') ">
   <div class="app">
   <div class="app-content">
@@ -43,5 +46,5 @@
   </div>
 </div>
   <!-- Scripts will be injected by webpack here -->
-<script type="text/javascript" src="polyfills.1c23dd72ba702cb069aa.bundle.js"></script><script type="text/javascript" src="main.d260c78a2f11173e0e5c.bundle.js" async></script></body>
+<script type="text/javascript" src="polyfills.1c23dd72ba702cb069aa.bundle.js"></script><script type="text/javascript" src="main.a9750e8eadc975fb6da3.bundle.js" async></script></body>
 </html>

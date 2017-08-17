@@ -89,7 +89,7 @@ server/bootsrap/cache
 server/public/*
 
 public/
-
+server/public/0
 client/.awcache
 *.js
 server/public/assets/sass/
