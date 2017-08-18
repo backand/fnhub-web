@@ -74,7 +74,6 @@ class ModuleController extends Controller
 
 
         $languages = $this->backand->getLanguages();
-
         return view('search', ['module' => $module, 'detail' => $detail, 'user' => $user, 'languages' => $languages]);
     }
 

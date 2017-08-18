@@ -92,10 +92,9 @@ export class AuthService {
   /**
    * setUser
    * @description set current User to localStorage
-   * @returns void
    * @memberOf AuthService
    */
-  public getUser(user: any): void {
+  public getUser() {
     return this.user;
   }
 

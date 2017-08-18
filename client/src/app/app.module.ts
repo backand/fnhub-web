@@ -40,6 +40,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search';
+import { TeamComponent } from './team';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
@@ -117,7 +118,8 @@ const routes: Routes = [
     ForgotPasswordComponent,
     LanguageFilterComponent,
     SearchComponent,
-    EqualValidator
+    EqualValidator,
+    TeamComponent
   ],
   /**
    * Import Angular's modules.
@@ -156,12 +158,13 @@ const routes: Routes = [
     ForgotPasswordComponent,
     HeaderMenuSidebarComponent,
     FiltersSidebarComponent,
-    SearchComponent
+    SearchComponent,
+    TeamComponent
   ]
 })
 export class AppModule {
   private componentsMap: any = {
-    'module': [],
+    'module': [TeamComponent],
     'signin': [SignInComponent],
     'signup': [SignupComponent],
     'forgot_password': [ForgotPasswordComponent],

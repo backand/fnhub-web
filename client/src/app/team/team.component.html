@@ -1,0 +1,34 @@
+<div class="sidebar-item-heading">collaboators <a href="" class="pull-right text-primary" style="display:none">All</a></div>
+<div class="team" *blockUI>
+  <div class="d-inline m-r-sm team-item" *ngFor="let member of team">
+    <a href="/users/{{member.username}}" title="{{member.fullName}}">
+    <img [src]="member.avatar || '/assets/img/avatar/user_50px.png'" class="w-56 circle img-thumbnail">
+    </a>
+    <div class="btn btn-circle btn-lg btn-remove" *ngIf="canAddMember" (click)="removeMember(member)"><i class="fa fa-times"></i></div>
+  </div>
+
+  <div class="d-inline" *ngIf="canAddMember">
+      <button type="button" class="btn btn-outline-primary btn-circle btn-lg" (click)="showAddMember = true"><i class="fa fa-plus"></i></button>
+  </div>
+
+  <div class="auto-complete" [ngClass]="{'show': showSuggestions}" *ngIf="showAddMember">
+    <div class="alert alert-danger" *ngIf="error">
+      {{error}}
+    </div>
+    <div class="form-group search-field">
+      <div class="input-group">
+        <input type="text" class="form-control" id="search-team" placeholder="Search for team" #searchBox id="search-box" (keyup)="search(searchBox.value)">
+        <div class="input-group-addon"><i class="fa" aria-hidden="true" [ngClass]="{'fa-spinner fa-spin': loading}"></i></div>
+      </div>
+    </div>
+    <div class="dropdown-menu user-suggestions">
+      <div class="dropdown-item" *ngIf="!loading && !hasSuggestion">No record found</div>
+      <div class="dropdown-item" *ngFor="let user of users | async" (click)="addTeamMember(user)">
+        <div class="d-inline m-r-sm">
+          <img  [src]="user.avatar || '/assets/img/avatar/user_50px.png'" class="w-48 circle img-thumbnail">
+        </div>
+        <div class="d-inline align-self-center">{{user.email}}</div>
+      </div>
+    </div>
+  </div>
+</div>

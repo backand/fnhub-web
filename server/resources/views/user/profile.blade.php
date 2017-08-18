@@ -89,10 +89,23 @@
 
                     <div class="sidebar-item">
                       <div class="sidebar-item-heading">collaboators <a href="" class="pull-right text-primary">All</a></div>
-                      <div>
-                        <img src="/assets/img/avatar/user_65px.png" class="w-48 circle img-thumbnail m-r-sm"> <img src="/assets/img/avatar/user_65px.png"
-                          class="w-48 circle img-thumbnail m-r-sm"><img src="/assets/img/avatar/user_65px.png" class="w-48 circle img-thumbnail m-r-sm">
-                        <img src="/assets/img/avatar/user_65px.png" class="w-48 circle img-thumbnail">
+                     
+                      <div class="team">
+                      <div class="d-inline m-r-sm">
+                        <img src="/assets/img/avatar/user_50px.png" class="w-56 circle img-thumbnail">
+                        </div>
+                        <div class="d-inline m-r-sm">
+                        <img src="/assets/img/avatar/user_50px.png" class="w-56 circle img-thumbnail">
+                        </div>
+                        <div class="d-inline m-r-sm">
+                        <img src="/assets/img/avatar/user_50px.png" class="w-56 circle img-thumbnail">
+                        </div>
+                        <div class="d-inline m-r-sm">
+                        <img src="/assets/img/avatar/user_50px.png" class="w-56 circle img-thumbnail">
+                        </div>
+                        <div class="d-inline m-r-sm">
+                        <img src="/assets/img/avatar/user_50px.png" class="w-56 circle img-thumbnail">
+                        </div>
                       </div>
                     </div>
                 </nav>

@@ -15,7 +15,6 @@ export class HeaderComponent {
   public isSearch: boolean = false;
   constructor(
     public appState: AppState,
-    private backand: BackandService,
     private modalService: NgbModal,
     private auth: AuthService
   ) {

@@ -23,7 +23,7 @@
                         <ul class="list small sidebar-list">
                             <li class="list-item">
                                 <div class="list-left">
-                                    <img src="/assets/img/avatar/avatar.png" class="w-32 circle img-thumbnail">
+                                    <img src="/assets/img/avatar/user_50px.png" class="w-32 circle img-thumbnail">
                                 </div>
                                 <div class="list-body">
                                     <span class="text-primary">{{$user['fullName']}}</span> <span class="text-gray-lt">updated at {{$module['updatedAt']}}</span>
@@ -88,6 +88,9 @@
                             @endforeach
                         </ul>
                     </div>
+
+                    <div class="sidebar-item">
+                    <team data-comp-id="module" data-module = "{{$module['name']}}" data-team="{{isset($module['team']) && count($module['team']) ?  json_encode($module['team']) : json_encode(array())}}"></team>
                 </nav>
             </div>
         </div>
