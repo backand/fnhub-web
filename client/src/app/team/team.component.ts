@@ -30,11 +30,11 @@ import 'rxjs/add/operator/do';
 })
 export class TeamComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
-  limit:number = 4;
+  limit: number = 4;
   users: Observable<any>;
   hasSuggestion: boolean = false;
   showSuggestions: boolean = false;
-  isExpand:boolean = false;
+  isExpand: boolean = false;
   error: any;
   canAddMember: boolean = false;
   private loading: boolean = false;
@@ -112,7 +112,13 @@ export class TeamComponent implements OnInit {
         return Observable.throw(error.message || error);
       })
   }
-
+  /**
+   * @function onClick
+   * @description click event handler, this is triggered when click on document. 
+   * it is used to close team suggestion dropdown when click outside dropdown
+   * @param {any} event 
+   * @memberof TeamComponent
+   */
   onClick(event) {
     if (!this.eRef.nativeElement.contains(event.target)) {
       this.showSuggestions = false;
@@ -120,7 +126,19 @@ export class TeamComponent implements OnInit {
     }
   }
 
+  /**
+   * @function addTeamMember
+   * @description function is used to add team member in module
+   * @param {*} member 
+   * @param {string} [actionType='user'] 
+   * @memberof TeamComponent
+   */
   addTeamMember(member: any, actionType: string = 'user'): void {
+    let idx = _.findIndex(this.team, {email : member.email});
+    if(idx >=0){
+      this.error = 'Already a team member';
+      return;
+    }
     let params = {
       "path": "addTeamMember",
       "username": member.email,
@@ -133,8 +151,9 @@ export class TeamComponent implements OnInit {
     }
     this.blockUI.start();
     this.backand.fn.post("module", params, {})
-      .then(data => {
+      .then(response => {
         this.blockUI.stop();
+        this.team.push(response.data);
         console.info('TeamComponent - addTeamMember - Member has been added to team - ', member, this.appService.guid);
       })
       .catch(error => {
@@ -144,6 +163,12 @@ export class TeamComponent implements OnInit {
       });
   }
 
+  /**
+   * @function removeMember
+   * @description remove member from team
+   * @param {*} member 
+   * @memberof TeamComponent
+   */
   removeMember(member: any): void {
     this.blockUI.start();
     this.backand.fn.post("module", {
@@ -153,6 +178,7 @@ export class TeamComponent implements OnInit {
       "moduleName": this.module
     }, {})
       .then(data => {
+        this.removeMemberFromList(member);
         this.blockUI.stop();
       })
       .catch(error => {
@@ -161,13 +187,42 @@ export class TeamComponent implements OnInit {
         this.blockUI.stop();
       });
   }
+  /**
+   * @function removeMemberFromList
+   * @description An helper function which removes , deleted member from Team
+   * @param {*} member 
+   * @memberof TeamComponent
+   */
+  removeMemberFromList(member: any) {
+    let idx = _.findIndex(this.team, (t: any) => {
+      return t.email === member.email;
+    });
+    this.team.splice(idx, 1);
+    this.updateTeam();
+  }
 
-  toggleList($event:any){
+  /**
+   * @function toggleList
+   * @description Toggle[ALL/LESS] team members list 
+   * @param {*} $event 
+   * @memberof TeamComponent
+   */
+  toggleList($event: any) {
     $event.preventDefault();
     this.isExpand = !this.isExpand;
-    if(this.list.length === this.team.length || this.list.length > 4){
+    this.updateTeam();
+  }
+
+  /**
+   * @function updateTeam
+   * @description Keep updating this.list with limited records
+   * @private
+   * @memberof TeamComponent
+   */
+  private updateTeam(): void {
+    if (this.list.length === this.team.length || this.list.length > 4) {
       this.list = _.take(this.team, 4);
-    }else {
+    } else {
       this.list = this.team;
     }
   }

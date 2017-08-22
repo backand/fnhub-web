@@ -1,8 +1,8 @@
-<div class="sidebar-item-heading">collaboators <a href="" class="pull-right text-primary" *ngIf="team.length > 4" (click)="toggleList($event)">{{ isExpand ? 'Less' : 'All' }}</a></div>
+<div class="sidebar-item-heading">collaboators ({{team.length}}) <a href="" class="pull-right text-primary" *ngIf="team.length > 4" (click)="toggleList($event)">{{ isExpand ? 'Less' : 'All' }} </a></div>
 <div class="team" *blockUI>
   <div class="d-inline m-r-sm team-item" *ngFor="let member of list">
     <a href="/users/{{member.username}}" title="{{member.fullName}}">
-    <img [src]="member.avatar || '/assets/img/avatar/user_50px.png'" class="w-56 circle img-thumbnail">
+    <img [src]="member.avatar || '/assets/img/avatar/user_50px.png'" class="w-56 circle img-thumbnail  m-b-sm">
     </a>
     <div class="btn btn-circle btn-lg btn-remove" *ngIf="canAddMember" (click)="removeMember(member)"><i class="fa fa-times"></i></div>
   </div>
