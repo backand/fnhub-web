@@ -146,4 +146,21 @@ class Backand
 
         return $user;
     }
+
+    public function isAuthenticated(){
+      $user = isset($_COOKIE['BACKAND_user']) ? json_decode($_COOKIE['BACKAND_user'], true) : null;
+      $isAuthenticated = false;
+      if($user === null){
+        $isAuthenticated =  false;
+      }else if( is_array($user)){
+        if($user['expires_in'] > 0){
+          $isAuthenticated =  true;
+        }else{
+          $isAuthenticated =  false;
+        }
+      }else{
+        $isAuthenticated = false;
+      }
+        return $isAuthenticated;
+    }
 }

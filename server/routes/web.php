@@ -16,10 +16,10 @@ Route::group(['middleware' => ['web','backandAuth']], function () {
       Route::get('/', function () {
         return view('home');
     });
-    Route::get('/module/{module_name}', 'ModuleController@show');
+    Route::get('/module/{module_name}', array('as' => 'module', 'uses' => 'ModuleController@show'))->middleware('checkGuid');
 
-    Route::get('/auth/signin', 'AuthController@signin');
-    Route::get('/auth/signup', 'AuthController@signup');
+    Route::get('/auth/signin', array('as' => 'signin', 'uses' => 'AuthController@signin') );
+    Route::get('/auth/signup', array('as' => 'signup', 'uses' => 'AuthController@signup') );
     Route::get('/auth/reset-password', 'AuthController@resetPassword');
     Route::get('/auth/forgot-password','AuthController@forgotPassword');
 

@@ -1,14 +1,15 @@
 import { Component, Input } from '@angular/core';
 
-import { AuthService } from '../shared';
+import { AuthService , AppService} from '../shared';
+
 @Component({
   selector: 'top-right-menu',
   template: `<ul class="nav nav-pills {{containerClass}} right-nav">
    <li class="nav-item" *ngIf="!auth.isAuthorized()">
-    <a class="nav-link" href="/auth/signin">login</a>
+    <a class="nav-link" href="{{appService.getSigninUrl()}}">login</a>
   </li>
   <li class="nav-item"  *ngIf="!auth.isAuthorized()">
-    <a class="nav-link active" href="/auth/signup">signup</a>
+    <a class="nav-link active" href="{{appService.getSignupUrl()}}">signup</a>
   </li>
   <li class="nav-item" *ngIf="auth.isAuthorized()">
     <a class="nav-link" href="/users/{{auth.user.username}}">{{auth.user.username}}</a>
@@ -21,7 +22,7 @@ import { AuthService } from '../shared';
 export class TopRightMenuComponent {
   @Input() containerClass: string;
   
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService, public appService : AppService) { }
   /**
    * @description 
    * @memberof TopRightMenuComponent

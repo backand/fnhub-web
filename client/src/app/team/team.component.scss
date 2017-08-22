@@ -49,6 +49,8 @@
         .user-suggestions {
             width: 320px;
             padding:0;
+            max-height: 300px;
+            overflow-y: scroll;
             .dropdown-item{
               padding: 10px 10px;
               cursor: pointer;

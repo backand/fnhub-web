@@ -1,13 +1,13 @@
 // angular
 import { Component } from '@angular/core';
 import { BackandService } from '@backand/angular2-sdk';
-import { AppService, AuthService} from '../shared';
+import { AppService, AuthService } from '../shared';
 import * as _ from 'lodash';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 
 @Component({
-  selector : 'signin',
+  selector: 'signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
 })
@@ -17,7 +17,7 @@ export class SignInComponent {
   error: any;
   constructor(
     private backand: BackandService,
-    private appService : AppService,
+    public appService: AppService,
     private authService: AuthService
   ) { }
 
@@ -33,8 +33,11 @@ export class SignInComponent {
       .signin(this.model.username, this.model.password).then(
       data => {
         this.authService.setUser();
-        this.appService.redirect('/');
-        this.blockUI.stop();
+        if (this.appService.hasGuid()) {
+          this.appService.redirect('/module/' + this.appService.module + '/?guid=' + this.appService.guid);
+        } else {
+          this.appService.redirect('/');
+        }
       },
       error => {
         console.error(error);

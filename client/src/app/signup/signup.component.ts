@@ -28,7 +28,7 @@ export class SignupComponent {
 
   constructor(
     private backand: BackandService,
-    private appService: AppService,
+    public appService: AppService,
     private http: Http
   ) { }
 
@@ -61,8 +61,11 @@ export class SignupComponent {
       }).then(
       data => {
         console.log(data);
-        this.appService.redirect('/');
-        this.blockUI.stop();
+        if (this.appService.hasGuid()) {
+          this.appService.redirect('/module/' + this.appService.module + '/?guid=' + this.appService.guid);
+        } else {
+          this.appService.redirect('/');
+        }
       },
       (error: any) => {
         this.reCaptcha.reset();

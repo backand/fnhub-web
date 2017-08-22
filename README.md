@@ -164,6 +164,8 @@ import * as _ from 'lodash';
 ```
 ___
 
-//"chmod -R 777 /bootstrap",
-      //"chown -R www-data:www-data /bootstrap"
+## Clear Config Cache
+php artisan config:cache
 
+## Clear route Caching
+php artisan route:clear
