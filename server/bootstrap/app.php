@@ -40,7 +40,7 @@ $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
-
+class_alias('Ixudra\Curl\Facades\Curl', 'Curl');
 $app->register(Ixudra\Curl\CurlServiceProvider::class);
 /*
 |--------------------------------------------------------------------------

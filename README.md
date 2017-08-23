@@ -164,8 +164,8 @@ import * as _ from 'lodash';
 ```
 ___
 
-## Clear Config Cache
-php artisan config:cache
-
-## Clear route Caching
+## Clear cache
+php artisan config:clear
 php artisan route:clear
+## Create Cahce
+php artisan config:cache

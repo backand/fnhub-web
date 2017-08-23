@@ -57,13 +57,14 @@
                     </div>
                     <div class="sidebar-item">
                         <ul class="list small sidebar-list">
-                            <li class="list-item">
-                                <div class="list-left">
-                                    <img src="/assets/img/avatar/user_65px.png" class="w-32 circle img-thumbnail">
-                                </div>
-                                <div class="list-body">
-                                    <span class="text-primary">UserName</span> <span class="text-gray-lt">updated at 12/12/2017</span>
-                                </div>
+                            <li class="list-item d-flex">
+                            <div class="d-flex mb-3">
+                              <div>
+                                <img src="{{ (isset($user['avatar']) && $user['avatar'] != '') ? $user['avatar'] : '/assets/img/avatar/user_65px.png' }}"
+                                alt="{{$user['fullName']}} avatar" class="w-40 circle img-thumbnail">
+                              </div>
+                                <div class="align-self-center p-2 pl-3"> Change your avatar at <a href="https://en.gravatar.com/" target="_blank">gravatar.com</a></div>
+                              </div>
                             </li>
                             <li class="list-item">
                                 <div class="list-left">
