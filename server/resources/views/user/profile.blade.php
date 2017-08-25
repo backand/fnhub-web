@@ -3,7 +3,7 @@
 @section('content')
     <div class="container page-module-detail">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div class="page-content">
                     <div class="d-flex mb-3">
                         <div>
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3 sidebar with-border">
+            <div class="col-md-4 sidebar with-border">
                 <nav>
                     <div class="sidebar-item">
                         <div class="sidebar-item-heading">Install</div>

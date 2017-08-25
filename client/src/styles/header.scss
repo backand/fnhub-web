@@ -9,7 +9,7 @@
 
 .app-header {
     position: relative; //background: #28292b;
-    padding: 12px 48px;
+    padding: 20px 50px;
     .logo {
         padding: 28px 0;
         .fnHub {
@@ -18,13 +18,23 @@
             font-weight: 300;
             line-height: 0.6;
             text-decoration: none;
-            >img{
-              margin-right: 15px;
+            >img {
+                margin-right: 15px;
             }
         }
     }
     .nav-wrapper {
+      font-weight: 300;
         padding: 12px 0;
+        .nav-left{
+          max-width: 390px;
+        }
+        .nav-right{
+          max-width: 300px;
+        }
+    }
+    .logo-wrapper {
+        max-width: 87px;
     }
     @media (max-width: 480px) {
         height: 100px;
@@ -42,8 +52,8 @@
             cursor: pointer;
         }
     }
-    .nav{
-      margin-top: 19px;
+    .nav {
+        margin-top: 19px;
     }
     &.center-layout {
         padding-top: 110px;
@@ -67,6 +77,8 @@
         }
     }
     .search-wrapper {
+        max-width: 680px;
+        margin: 0 auto;
         margin-top: 12px;
     }
 }

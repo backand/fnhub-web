@@ -3,7 +3,7 @@
     <div class="container page-module-detail">
         <div class="row">
 
-            <div class="col-md-9">
+            <div class="col-md-8">
                <h2 class="page-heading" *ngIf="$module.name"><i class="fa fa-star fa-fw text-primary"></i> {{$module['name']}}</h2>
                     <div class="page-content m-t-md text-gray-lt">
                         <div class="markdown-body">
@@ -12,7 +12,7 @@
                     </div>
             </div>
 
-            <div class="col-md-3 sidebar with-border">
+            <div class="col-md-4 sidebar with-border">
                 <nav>
                     <div class="sidebar-item">
                         <div class="sidebar-item-heading">Install</div>

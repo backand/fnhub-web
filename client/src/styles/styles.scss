@@ -55,7 +55,7 @@ body {
 //set .container width to 1490 on larger devices
 @media (min-width: 1200px) {
     .container {
-        width: 1490px;
+        width: 1280px;
         max-width: 100%;
         .page-content {
             margin-right: 40px;
@@ -182,10 +182,6 @@ hr {
 }
 
 .sidebar {
-    @media (min-width: 768px) {
-        padding-left: 30px;
-        padding-right: 30px;
-    }
     .sidebar-item {
         margin-bottom: 30px;
         .sidebar-item-heading {

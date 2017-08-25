@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
         <div class="sidebar-item-heading">Language</div>
         <ul class="nav flex-column">
           <li class="nav-item" *ngFor="let language of languages">
-            <a class="nav-link" [ngClass]="{'text-primary': language.selected}" href="#" (click)="selectLanguage(language.key,  $event)"><i class="fa fa-caret-right fa-fw" aria-hidden="true" *ngIf="language.selected"></i>{{language.name}} <i  aria-hidden="true" *ngIf="language.selected" class="fa fa-times pull-right"></i></a>
+            <a class="nav-link px-0" [ngClass]="{'text-primary': language.selected}" href="#" (click)="selectLanguage(language.key,  $event)"><i class="fa fa-caret-right fa-fw" aria-hidden="true" [style.visibility]="language.selected ? 'visible': 'hidden' "></i>{{language.name}} <i  aria-hidden="true" *ngIf="language.selected" class="fa fa-times pull-right"></i></a>
           </li>
         </ul>
       </div>`
