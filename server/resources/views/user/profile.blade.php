@@ -7,8 +7,7 @@
                 <div class="page-content">
                     <div class="d-flex mb-3">
                         <div>
-                            <img class="w-56 circle img-thumbnail" src="{{ (isset($user['avatar']) && $user['avatar'] != '') ? $user['avatar'] : '/assets/img/avatar/user_65px.png' }}"
-                                 alt="{{$user['fullName']}} avatar">
+                        <img src="{{ $avatar }}" class="w-56 circle" />
                         </div>
                         <div class="align-self-center p-2 pl-3"><h2 class="mt-0 mb-0">{{$user['fullName']}}</h2></div>
                     </div>
@@ -60,8 +59,7 @@
                             <li class="list-item d-flex">
                             <div class="d-flex mb-3">
                               <div>
-                                <img src="{{ (isset($user['avatar']) && $user['avatar'] != '') ? $user['avatar'] : '/assets/img/avatar/user_65px.png' }}"
-                                alt="{{$user['fullName']}} avatar" class="w-40 circle img-thumbnail">
+                                <img src="{{ $avatar }}" class="w-40 circle" />
                               </div>
                                 <div class="align-self-center p-2 pl-3"> Change your avatar at <a href="https://en.gravatar.com/" target="_blank">gravatar.com</a></div>
                               </div>
@@ -93,19 +91,19 @@
                      
                       <div class="team">
                       <div class="d-inline m-r-sm">
-                        <img src="/assets/img/avatar/user_50px.png" class="w-56 circle img-thumbnail">
+                        <img src="/assets/img/avatar/1.png" class="w-56 circle img-thumbnail">
                         </div>
                         <div class="d-inline m-r-sm">
-                        <img src="/assets/img/avatar/user_50px.png" class="w-56 circle img-thumbnail">
+                        <img src="/assets/img/avatar/2.png" class="w-56 circle img-thumbnail">
                         </div>
                         <div class="d-inline m-r-sm">
-                        <img src="/assets/img/avatar/user_50px.png" class="w-56 circle img-thumbnail">
+                        <img src="/assets/img/avatar/3.png" class="w-56 circle img-thumbnail">
                         </div>
                         <div class="d-inline m-r-sm">
-                        <img src="/assets/img/avatar/user_50px.png" class="w-56 circle img-thumbnail">
+                        <img src="/assets/img/avatar/4.png" class="w-56 circle img-thumbnail">
                         </div>
                         <div class="d-inline m-r-sm">
-                        <img src="/assets/img/avatar/user_50px.png" class="w-56 circle img-thumbnail">
+                        <img src="/assets/img/avatar/5.png" class="w-56 circle img-thumbnail">
                         </div>
                       </div>
                     </div>

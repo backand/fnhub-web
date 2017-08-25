@@ -40,6 +40,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search';
+import { AvatarComponent } from './avatar';
 import { TeamComponent } from './team';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
@@ -119,6 +120,7 @@ const routes: Routes = [
     LanguageFilterComponent,
     SearchComponent,
     EqualValidator,
+    AvatarComponent,
     TeamComponent
   ],
   /**
@@ -159,19 +161,20 @@ const routes: Routes = [
     HeaderMenuSidebarComponent,
     FiltersSidebarComponent,
     SearchComponent,
-    TeamComponent
+    TeamComponent,
+    AvatarComponent
   ]
 })
 export class AppModule {
   private componentsMap: any = {
-    'module': [TeamComponent],
+    'module': [TeamComponent, AvatarComponent],
     'signin': [SignInComponent],
     'signup': [SignupComponent],
     'forgot_password': [ForgotPasswordComponent],
     'reset_password': [ResetPasswordComponent],
     'default': [HomeComponent],
     'app_search_module': [SearchComponent],
-    'users': []
+    'users': [AvatarComponent]
   };
   constructor(
     public appRef: ApplicationRef,

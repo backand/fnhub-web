@@ -74,7 +74,8 @@ class ModuleController extends Controller
 
 
         $languages = $this->backand->getLanguages();
-        return view('search', ['module' => $module, 'detail' => $detail, 'user' => $user, 'languages' => $languages]);
+        $avatar = get_gravatar($user['email'], 48);
+        return view('search', compact('module' ,'detail','user','languages','avatar'));
     }
 
 }

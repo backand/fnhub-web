@@ -25,7 +25,9 @@ class UserController extends Controller
      */
     public function show(Request $request, $user_name="")
     {
+        
         $user = $this->backand->getUserbyUserName($user_name);
-        return view('user.profile', ['user' => $user]);
+        $avatar = get_gravatar($user['email'], 56);
+        return view('user.profile', compact('user', 'avatar'));
     }
 }

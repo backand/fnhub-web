@@ -2,7 +2,7 @@
 <div class="team" *blockUI>
   <div class="d-inline m-r-sm team-item" *ngFor="let member of list">
     <a href="/users/{{member.username}}" title="{{member.fullName}}">
-    <img [src]="member.avatar || '/assets/img/avatar/user_50px.png'" class="w-56 circle img-thumbnail  m-b-sm">
+    <avatar data-email="member.email" data-size="56"  data-class="w-56 circle img-thumbnail  m-b-sm"></avatar>
     </a>
     <div class="btn btn-circle btn-lg btn-remove" *ngIf="canAddMember" (click)="removeMember(member)"><i class="fa fa-times"></i></div>
   </div>
@@ -25,7 +25,7 @@
       <div class="dropdown-item" *ngIf="!loading && !hasSuggestion">No record found</div>
       <div class="dropdown-item" *ngFor="let user of users | async" (click)="addTeamMember(user)">
         <div class="d-inline m-r-sm">
-          <img  [src]="user.avatar || '/assets/img/avatar/user_50px.png'" class="w-48 circle img-thumbnail">
+          <avatar data-email="user.email" data-size="48"  data-class="w-48 circle img-thumbnail"></avatar>
         </div>
         <div class="d-inline align-self-center">{{user.email}}</div>
       </div>

@@ -21,13 +21,13 @@
                     </div>
                     <div class="sidebar-item">
                         <ul class="list small sidebar-list">
-                            <li class="list-item">
-                                <div class="list-left">
-                                    <img src="/assets/img/avatar/user_50px.png" class="w-32 circle img-thumbnail">
-                                </div>
-                                <div class="list-body">
-                                    <span class="text-primary">{{$user['fullName']}}</span> <span class="text-gray-lt">updated at {{$module['updatedAt']}}</span>
-                                </div>
+                            <li class="list-item d-flex">
+                            <div class="d-flex mb-3">
+                              <div>
+                                <img src="{{ $avatar }}" class="w-40 circle" />
+                              </div>
+                                <div class="align-self-center p-2 pl-3"> <a class="text-primary" href="/users/{{$user['username']}}">{{$user['fullName']}}</a> <span class="text-gray-lt">updated at {{$module['updatedAt']}}</span></div>
+                              </div>
                             </li>
                             <li class="list-item">
                                 <div class="list-left">
