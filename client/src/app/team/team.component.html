@@ -1,6 +1,6 @@
 <div class="sidebar-item-heading">collaboators ({{team.length}}) <a href="" class="pull-right text-primary" *ngIf="team.length > 4" (click)="toggleList($event)">{{ isExpand ? 'Less' : 'All' }} </a></div>
 <div class="team" *blockUI>
-  <div class="d-inline m-r-sm team-item" *ngFor="let member of list">
+  <div class="d-inline m-r-sm team-item" *ngFor="let member of list" placement="top" ngbTooltip="{{member.username}}">
     <a href="/users/{{member.username}}" title="{{member.fullName}}">
     <avatar data-email="member.email" data-size="56"  data-class="w-56 circle img-thumbnail  m-b-sm"></avatar>
     </a>
