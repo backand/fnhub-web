@@ -53,7 +53,6 @@ export class TeamComponent implements OnInit {
     config.autoClose = false;
     this.module = eRef.nativeElement.getAttribute('data-module');
     this.team = JSON.parse(eRef.nativeElement.getAttribute('data-team'));
-    this.list = _.take(this.team, 4);
   }
 
   ngOnInit(): void {
@@ -65,6 +64,10 @@ export class TeamComponent implements OnInit {
     });
     console.info('Current user is a member of team', idx);
     this.canAddMember = idx >= 0;
+    if (!this.canAddMember) {
+      this.limit = 5;
+    }
+    this.list = _.take(this.team, this.limit);
 
     this.users = this.searchTerms
       .debounceTime(400)        // wait for 300ms pause in events
@@ -134,8 +137,8 @@ export class TeamComponent implements OnInit {
    * @memberof TeamComponent
    */
   addTeamMember(member: any, actionType: string = 'user'): void {
-    let idx = _.findIndex(this.team, {email : member.email});
-    if(idx >=0){
+    let idx = _.findIndex(this.team, { email: member.email });
+    if (idx >= 0) {
       this.error = 'Already a team member';
       return;
     }
@@ -220,8 +223,8 @@ export class TeamComponent implements OnInit {
    * @memberof TeamComponent
    */
   private updateTeam(): void {
-    if (this.list.length === this.team.length || this.list.length > 4) {
-      this.list = _.take(this.team, 4);
+    if (this.list.length === this.team.length || this.list.length > this.limit) {
+      this.list = _.take(this.team, this.limit);
     } else {
       this.list = this.team;
     }

@@ -167,14 +167,14 @@ const routes: Routes = [
 })
 export class AppModule {
   private componentsMap: any = {
-    'module': [TeamComponent, AvatarComponent],
+    'module': [TeamComponent],
     'signin': [SignInComponent],
     'signup': [SignupComponent],
     'forgot_password': [ForgotPasswordComponent],
     'reset_password': [ResetPasswordComponent],
     'default': [HomeComponent],
     'app_search_module': [SearchComponent],
-    'users': [AvatarComponent]
+    'users': []
   };
   constructor(
     public appRef: ApplicationRef,
