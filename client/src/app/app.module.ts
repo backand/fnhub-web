@@ -99,6 +99,14 @@ const routes: Routes = [
     path: 'users/:action',
     children: []
   },
+  {
+    path: 'docs',
+    children: [{
+      path: ':page_slug',
+      children: []
+    }]
+  }
+
 ];
 
 /**

@@ -27,4 +27,6 @@ Route::group(['middleware' => ['web','backandAuth']], function () {
     Route::get('/users/{user_name}','UserController@show');
 
     Route::get('/features','FeatureController@index');
+    Route::get('/docs','DocController@index');
+    Route::get('/docs/{page_slug}','DocController@getPagebySlug');
 });

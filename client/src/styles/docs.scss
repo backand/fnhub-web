@@ -1,0 +1,29 @@
+.page-docs {
+    h1,
+    h4 {
+        color: #282828;
+    }
+    margin-top: 20px;
+    .page-content {
+        margin-top: 80px;
+    }
+    .page-heading {
+        margin-bottom: 55px !important;
+    }
+    .nav {
+        .nav-item {
+            .nav-link {
+                padding: .5em .2em;
+                position: relative;
+                i{
+                  &.fa{
+                    position: absolute;
+                    left: 0;
+                    top: .6rem;
+                  }
+                }
+                padding-left: 18px;
+            }
+        }
+    }
+}

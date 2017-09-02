@@ -1,0 +1,52 @@
+{
+  "documentation": {
+    "title": "Documentation",
+    "link": "",
+    "sub_menu": [
+      {
+        "title": "Product usage documentation",
+        "link": "/docs/product-usage"
+      }
+    ]
+  },
+  "quick_start": {
+    "title": "Quick Start",
+    "link": "",
+    "sub_menu": [
+      {
+        "title": "Guides for publishers",
+        "link": "/docs/guides-for-publishers"
+      },
+      {
+        "title": "Guides for consumers",
+        "link": "/docs/guides-for-consumers"
+      }
+    ]
+  },
+  "reference_guides": {
+    "title": "Reference Guides",
+    "link": "",
+    "sub_menu": [
+      {
+        "title": "How to publish a package on FnHub.io",
+        "link": "/docs/how-to-publish-a-package-on-fnhub.io"
+      },
+      {
+        "title": "Configure your package correctly",
+        "link": "/docs/configure-your-package-correctly"
+      },
+      {
+        "title": "Creating a multi-function package",
+        "link": "/docs/creating-a-multi-function-package"
+      },
+      {
+        "title": "How to download and work with FnHub.io functions",
+        "link": "/docs/how-to-download-and-work-with-fnhub.io-functions"
+      },
+      {
+        "title": "Reporting issues with a function package",
+        "link": "/docs/reporting-issues-with-a-function-package"
+      }
+    ]
+  }
+}
