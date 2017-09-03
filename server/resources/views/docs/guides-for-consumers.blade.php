@@ -1,3 +1,4 @@
+<h2 id='for-function-consumers'>For Function Consumers</h2>
 <p>Looking to accelerate your serverless development with a FnHub.io package? Pulling down and deploying a function is quick and painless! Just follow these easy steps:</p>
 
 <ol>

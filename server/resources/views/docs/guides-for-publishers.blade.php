@@ -1,3 +1,4 @@
+<h2 id='for-function-publishers'>For Function publishers</h2>
 <p>Publishing a function on FnHub.io is quick and easy! Just follow these three steps to release your package to the world:</p>
 
 <ol>

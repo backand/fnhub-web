@@ -29,7 +29,7 @@
     "sub_menu": [
       {
         "title": "How to publish a package on FnHub.io",
-        "link": "/docs/how-to-publish-a-package-on-fnhub.io"
+        "link": "/docs/how-to-publish-a-package-on-fnhub-io"
       },
       {
         "title": "Configure your package correctly",
@@ -41,7 +41,7 @@
       },
       {
         "title": "How to download and work with FnHub.io functions",
-        "link": "/docs/how-to-download-and-work-with-fnhub.io-functions"
+        "link": "/docs/how-to-download-and-work-with-fnhub-io-functions"
       },
       {
         "title": "Reporting issues with a function package",

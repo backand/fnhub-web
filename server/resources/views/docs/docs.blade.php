@@ -28,8 +28,8 @@
             </div>
 
             <div class="col-md-9">
-                <div class="page-entry" style="border-left: 1px solid #e4e4e4;padding-left: 38px;">
-                    @include('docs.'.$page_slug);
+                <div class="page-entry">
+                    @include('docs.'.$page_slug)
                 </div>
             </div>
         </div>

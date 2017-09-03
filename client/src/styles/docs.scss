@@ -15,15 +15,24 @@
             .nav-link {
                 padding: .5em .2em;
                 position: relative;
-                i{
-                  &.fa{
-                    position: absolute;
-                    left: 0;
-                    top: .6rem;
-                  }
+                i {
+                    &.fa {
+                        position: absolute;
+                        left: 0;
+                        top: .6rem;
+                    }
                 }
                 padding-left: 18px;
             }
+        }
+    }
+    .page-entry {
+        border-left: 1px solid #e4e4e4;
+        padding-left: 38px;
+        h1,
+        h2,
+        h3 {
+            font-weight: 300;
         }
     }
 }
