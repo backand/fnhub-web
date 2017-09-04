@@ -34,7 +34,7 @@
   
   <!-- CSS will be injected by webpack here -->
   <!-- Preload link tags will be injected by webpack here -->
-<link href="main.0ac3971ed07cffd35e3ebda4bd19f7a5.css" rel="stylesheet"><link rel="preload" href="polyfills.1c23dd72ba702cb069aa.bundle.js" as="script"/><link rel="preload" href="main.d11e287a13dc89119664.bundle.js" as="script"/></head>
+<link href="main.0ac3971ed07cffd35e3ebda4bd19f7a5.css" rel="stylesheet"><link rel="preload" href="polyfills.1c23dd72ba702cb069aa.bundle.js" as="script"/><link rel="preload" href="main.ba241128c2037c07bda9.bundle.js" as="script"/></head>
 <body class="bg-none  @stack('body-class') ">
   <div class="app">
   <div class="app-content">
@@ -46,5 +46,5 @@
   </div>
 </div>
   <!-- Scripts will be injected by webpack here -->
-<script type="text/javascript" src="polyfills.1c23dd72ba702cb069aa.bundle.js"></script><script type="text/javascript" src="main.d11e287a13dc89119664.bundle.js" async></script></body>
+<script type="text/javascript" src="polyfills.1c23dd72ba702cb069aa.bundle.js"></script><script type="text/javascript" src="main.ba241128c2037c07bda9.bundle.js" async></script></body>
 </html>
