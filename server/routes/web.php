@@ -13,9 +13,7 @@
 
 
 Route::group(['middleware' => ['web','backandAuth']], function () {
-      Route::get('/', function () {
-        return view('home');
-    });
+    Route::get('/', array('as'=>'home', 'uses' => 'FeatureController@index'));
     Route::get('/module/{module_name}', array('as' => 'module', 'uses' => 'ModuleController@show'))->middleware('checkGuid');
 
     Route::get('/auth/signin', array('as' => 'signin', 'uses' => 'AuthController@signin') );
@@ -27,6 +25,7 @@ Route::group(['middleware' => ['web','backandAuth']], function () {
     Route::get('/users/{user_name}','UserController@show');
 
     Route::get('/features','FeatureController@index');
+    Route::get('/search','SearchController@index');
     Route::get('/docs','DocController@index');
     Route::get('/docs/{page_slug}','DocController@getPagebySlug');
 });

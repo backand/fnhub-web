@@ -37,10 +37,10 @@ export class SearchComponent implements OnInit {
   }
 
   searchModules(): void {
-    if(window.location.pathname === '/'){
-        this.router.navigate(['/'], { queryParams: { q: this.searchQuery } });
+    if(window.location.pathname === '/search'){
+        this.router.navigate(['/search'], { queryParams: { q: this.searchQuery } });
     }else{
-      this.appService.redirect('/?q='+this.searchQuery);
+      this.appService.redirect('/search?q='+this.searchQuery);
     }
   }
 

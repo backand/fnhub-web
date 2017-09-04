@@ -19,7 +19,7 @@ export class HeaderComponent {
     private auth: AuthService
   ) {
     const route = window.location.pathname;
-    if (_.startsWith(route, '/features')) {
+    if (_.startsWith(route, '/features') || (route === '/') ) {
       this.isSearch = false;
     } else {
       this.isSearch = true;

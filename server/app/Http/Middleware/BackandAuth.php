@@ -23,7 +23,7 @@ class BackandAuth
      */
     public function handle($request, Closure $next){   
       if($request->path() === '/' && !($request->input('q') || $request->input('l'))){
-        return redirect('/features');
+        //return redirect('/features');
        /* if(!$this->backand->isAuthenticated() && !($request->input('q') || $request->input('l')) ){
           return redirect('/features');
         } */

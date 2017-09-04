@@ -105,6 +105,13 @@ const routes: Routes = [
       path: ':page_slug',
       children: []
     }]
+  },
+  {
+    path: 'search',
+    children: [{
+      path: ':page_slug',
+      children: []
+    }]
   }
 
 ];

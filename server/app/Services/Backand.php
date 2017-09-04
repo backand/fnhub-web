@@ -84,7 +84,7 @@ class Backand
                 if (is_array($server_output_json) && isset($server_output_json['errorMessage'])) {
                     \Log::info('Error mdToHtml', $server_output_json);
                 } else {
-                    $detail = $server_output_json;
+                  $detail = strpos($server_output_json, '404: Not Found') === 3 ? '' :  $server_output_json;
                 }
             } else {
                 \Log::info('Error while mdtohtml', array('respone' => $response, 'repoUrl' => $repo));
